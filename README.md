@@ -111,5 +111,28 @@ Online store
      - Product
      - Comment
     
-  
+ - Routing:
+   * **Description:** React Routing is configured in "src/index.js" file. Example: 
+   ```
+    <Router history={hashHistory}>
+     <Route path="/" component={App}>
+      <Route path="/scheduler" component={Scheduler}/>
+      <Route path="/day" component={Day}/>
+      <Route path="/week" component={Week}/>
+      <Route path="/year" component={Year}/>
+     </Route>
+     <Route path="/error" component={Error}/>
+   </Router>
+
+   ```
+    * Router, Route, hashHistory came from "react-router" npm module. 
+    * Router defines application routing
+    * Route is a specific route. It can contains other routes
+    * **history={hashHistory}** means that the url will be: localhost:3000/**#**/day for example. You can check for more information here [History docs](https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/history.md)
+    * **path** is the url path that will be shown in browser.
+    * **component** is the react component that will be invoked when user goes to the route path.
+    * You can see that we have a nested routes. This means that when user goes to the **/#/day** for example, the components that will be rendered are App and Day (App contains header for example). But **/error** route is not nested. And when user goes to that route - only Error component will be rendered.
+    * You can add other route wherever you like. Just be careful if you want to nest the route.  
+   
+   
 
