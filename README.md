@@ -2,6 +2,11 @@
 
 Online store
 
+- Initialize
+  * git clone
+  * npm install
+  * npm start
+
 - Developers:
   * Valentin Georgiev
   * Ivan Atanasov
@@ -95,16 +100,16 @@ Online store
     * security_code
     * expired_date
     
-  - Responsibilities:
-    * Joro:
-      - Auth/User model
-      - Address
-    * Ivo:
-      - Order
-      - Basket
-    * Valio:
-      - Product
-      - Comment
+ - Responsibilities:
+   * Joro:
+     - Auth/User model
+     - Address
+   * Ivo:
+     - Order
+     - Basket
+   * Valio:
+     - Product
+     - Comment
     
   
 
