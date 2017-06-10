@@ -1,23 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
-import App from './app';
+import { Router, Route, hashHistory } from 'react-router'
+import App from './components/App';
 
-function router() {
-	var page = window.location.href.slice(window.location.href.lastIndexOf('/') + 1);
+import Scheduler from './components/Scheduler';
+import Day from './components/Day';
+import Week from './components/Week';
+import Year from './components/Year';
+import Error from './components/Error';
 
-	switch (page) {
-		case ''		: page = "Scheduler"; break;
-		case 'day'	: page = "Day"; break;
-		case 'week' : page = "Week"; break;
-		case 'year' : page = "Year"; break;
-		default 	: page = "Error";
-	}
-
-	return page;
-}
-
-ReactDOM.render(
-  <App page={router()}/>,
-  document.getElementById('root')
-);
+ReactDOM.render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App}>
+	    <Route path="/scheduler" component={Scheduler}/>
+	    <Route path="/day" component={Day}/>
+	    <Route path="/week" component={Week}/>
+	    <Route path="/year" component={Year}/>
+    </Route>
+    <Route path="/error" component={Error}/>
+  </Router>
+), document.getElementById('root'));
