@@ -10,13 +10,13 @@ var express = require('express'),
 	cors = require('cors');
 
 
-// mongoose.connect(config.database, function(err){
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log('Connected to the database');
-//     }
-// });
+mongoose.connect(config.database, function(err){
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Connected to the database');
+    }
+});
 
 app.use(morgan('dev'));
 
