@@ -1,0 +1,40 @@
+.day-wrapper {
+	margin-top: 40px;
+}
+
+.day-link {
+	width: 100%;
+	text-align: center;
+	display: block;
+	font-size: 16px;
+	text-decoration: none;
+	color: #033DA0;
+	margin-bottom: 40px;
+}
+
+.hideShowLabel {
+	text-align: center;
+	margin-top: 40px;
+}
+
+.day-title {
+	text-align: center;
+	font-size: 32px;
+	margin: 25px 0;
+}
+
+.thoughts-text, .achieve-text, .thank-text {
+	border-radius: 7px;
+	border: 0;
+	font-size: 25px;
+	padding: 2px 10px;
+
+	-webkit-box-shadow: 1px 0px 7px 1px rgba(148,145,148,1);
+	-moz-box-shadow: 1px 0px 7px 1px rgba(148,145,148,1);
+	box-shadow: 1px 0px 7px 1px rgba(148,145,148,1);
+	
+	width: 90%;
+	height: 50px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
