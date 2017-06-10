@@ -56,7 +56,7 @@ Online store
     * size
     * quantity
     
-  * **AddedProduct model**
+  * **AddedProduct/Basket model**
     * user_id
     * product_id
     * size
@@ -95,7 +95,16 @@ Online store
     * security_code
     * expired_date
     
-  
+  - Responsibilities:
+    * Joro:
+      - Auth/User model
+      - Address
+    * Ivo:
+      - Order
+      - Basket
+    * Valio:
+      - Product
+      - Comment
     
   
 
