@@ -34,7 +34,9 @@ app.use(cors({
 
 // Set up Routes for the application
 var user = require('./app/routes/user')();
+var product = require('./app/routes/product')();
 app.use('/user', user);
+app.use('/product', product);
 
 app.listen(config.port, function(err) {
 	if ( err ) {

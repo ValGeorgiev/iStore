@@ -10,9 +10,6 @@ var ProductSchema = new Schema({
     description: {
         type: String
     },
-    size: {
-        type: [String]
-    },
     color: {
         type: [String]
     },
