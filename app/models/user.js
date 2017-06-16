@@ -3,7 +3,12 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var UserSchema = new Schema({
-    names: {
+    first_name: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    last_name: {
         type: String,
         required: true,
         trim: true
@@ -21,7 +26,6 @@ var UserSchema = new Schema({
         type: String,
         required: true,
         trim: true,
-        select: false
     },
     type: {
         type: String,
@@ -58,7 +62,6 @@ UserSchema.pre('save', function(next){
 
 UserSchema.methods.comparePassword = function(password){
     var user = this;
-
     return bcrypt.compareSync(password, user.password);
 };
 

@@ -32,11 +32,11 @@ app.use(cors({
 	origin: 'http://localhost:3000'
 }));
 
-// Set up Routes for the application
-var user = require('./app/routes/user')();
 var product = require('./app/routes/product')();
-app.use('/user', user);
 app.use('/product', product);
+
+var authenticate = require('./app/routes/authenticate')();
+app.use('/user', authenticate);
 
 app.listen(config.port, function(err) {
 	if ( err ) {

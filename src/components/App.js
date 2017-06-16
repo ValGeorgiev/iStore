@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-
+import auth  from './Auth';
 import '../css/app.css';
 
 class App extends Component {
@@ -12,10 +12,32 @@ class App extends Component {
 			openSettings: false
 		};
 	}
+	
+	 componentDidMount() {
+			auth.checkForToken((flag)=>this.setState({'isAuthenticated':flag}) ); 
+	 }
 
-	componentWillMount() {
 
+	clickSettings() {
+		this.setState({
+  			openSettings: true
+  		});
 	}
+
+
+	closeSettingsModal() {
+		this.setState({
+  			openSettings: false
+  		});
+	}
+
+
+	saveSettings() {
+		this.setState({
+  			openSettings: false
+  		});
+	}
+ 
 
 	render() {
 		
