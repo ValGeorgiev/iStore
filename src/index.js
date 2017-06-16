@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router'
+import {render} from 'react-dom';
+import { Router, Route, browserHistory } from 'react-router'
 import App from './components/App';
 
 import ProductGrid from './components/ProductGrid';
@@ -9,7 +9,6 @@ import Week from './components/Week';
 import Year from './components/Year';
 import Register from './components/Register';
 import Login from './components/Login';
-import Logout from './components/Logout';
 import Profile from './components/Profile';
 import Scheduler from './components/Scheduler';
 import Error from './components/Error';

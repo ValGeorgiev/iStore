@@ -54,10 +54,10 @@ class App extends Component {
 			          <Link to="/day">Day</Link>
 			        </div>    
 			        <div className="col-xs-3">
-			          <Link to="/week">Week</Link>
+			          {this.state.isAuthenticated? <Link to="/register">Register</Link> : null } 
 			        </div>    
 			        <div className="col-xs-3">
-			          <Link to="/year">Year</Link>
+			          {this.state.isAuthenticated? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link> } 
 			        </div>    
 		        </div>
 				{this.props.children}		
