@@ -13,10 +13,9 @@ class App extends Component {
 		};
 	}
 	
-	 componentDidMount() {
-			auth.checkForToken((flag)=>this.setState({'isAuthenticated':flag}) ); 
-	 }
-
+	componentDidMount() {
+		auth.checkForToken((flag)=>this.setState({'isAuthenticated':flag}) ); 
+	}
 
 	clickSettings() {
 		this.setState({
@@ -24,20 +23,17 @@ class App extends Component {
   		});
 	}
 
-
 	closeSettingsModal() {
 		this.setState({
   			openSettings: false
   		});
 	}
 
-
 	saveSettings() {
 		this.setState({
   			openSettings: false
   		});
-	}
- 
+	} 
 
 	render() {
 		
@@ -54,10 +50,10 @@ class App extends Component {
 			          <Link to="/day">Day</Link>
 			        </div>    
 			        <div className="col-xs-3">
-			          {this.state.isAuthenticated? <Link to="/register">Register</Link> : null } 
+			          {this.state.isAuthenticated ? <Link to="/register">Register</Link> : null } 
 			        </div>    
 			        <div className="col-xs-3">
-			          {this.state.isAuthenticated? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link> } 
+			          {this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link> } 
 			        </div>    
 		        </div>
 				{this.props.children}		
