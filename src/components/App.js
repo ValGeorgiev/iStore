@@ -44,7 +44,13 @@ class App extends Component {
 			          <h1 id="main-title">iStore</h1>
 			        </div>
 			        <div className="col-xs-3">
-			          <Link to="/products">Phones</Link>
+			          <Link to="/products/phones">Phones</Link>
+			        </div>    
+			        <div className="col-xs-3">
+			          <Link to="/products/tv">TV</Link>
+			        </div>    
+			        <div className="col-xs-3">
+			          <Link to="/products/laptops">Laptops</Link>
 			        </div>    
 			        <div className="col-xs-3">
 			          <Link to="/day">Day</Link>

@@ -1,6 +1,6 @@
 import ajax from 'superagent';
 
-class Auth{
+class Auth {
 	constructor() { 
         this.isAuthenticated = false;
         this.isAdmin= false; 

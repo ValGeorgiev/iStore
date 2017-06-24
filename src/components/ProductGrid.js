@@ -6,21 +6,26 @@ import SERVER_URL from '../config';
 
 
 class ProductGrid extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			products: []
 		}
 	}
 	
-
-	componentWillMount() {
-		this.getProducts();
+	componentWillReceiveProps(nextProps) {
+		this.getProducts(nextProps.routeParams.product);
 	}
 
-	getProducts() {
-		ajax.get(SERVER_URL + '/product/all')
+	componentWillMount() {
+		if (!!this.state.products && this.state.products.length === 0) {
+			this.getProducts(this.props.routeParams.product);
+		}
+	}
+
+	getProducts(type) {
+		ajax.get(SERVER_URL + '/product/' + type)
 			.end((err, res) => {
 				if(!err && res) {
 					let products = JSON.parse(res.text);
@@ -35,7 +40,7 @@ class ProductGrid extends Component {
 					});
 				}
 			});
-	}
+	}			
 
 	addProduct() {
 		ajax.post(SERVER_URL + '/product/add')
@@ -57,7 +62,7 @@ class ProductGrid extends Component {
 
   	render() {
 	  	let products;
-	  	
+
 	  	if (this.state.products) {
 			products = this.state.products.map(product => {
 	    		return (
@@ -69,7 +74,7 @@ class ProductGrid extends Component {
 	    return (
 			<div className="row products-wrapper">
 				<div className="col-xs-12">
-			  		<h2 className="product-title">Products</h2>
+			  		<h2 className="product-title">{this.props.routeParams.product.toUpperCase()}</h2>
 				</div>
 				{products}
 			</div>

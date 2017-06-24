@@ -8,8 +8,10 @@ var Product = require('../models/product');
 module.exports = function() {
 	let productRoute = express.Router();
 
-	productRoute.get('/all', function(req, res) {
-		Product.find({}, function(err, products) {
+	productRoute.get('/:product', function(req, res) {
+		Product.find({
+			category: { $in: [req.params['product']] }
+		}, function(err, products) {
 			if (!!err) {
 				res.send(err);
 			} else if (!!products) {

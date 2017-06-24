@@ -20,6 +20,9 @@ var ProductSchema = new Schema({
     },
     price: {
         type: String
+    },
+    category: {
+        type: [String]
     }
 });
 
