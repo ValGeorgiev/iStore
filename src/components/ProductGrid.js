@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import ajax from 'superagent';
 
-import Product from './Product';
+import ProductTile from './ProductTile';
 import SERVER_URL from '../config';
+import '../css/productgrid.css';
 
 
 class ProductGrid extends Component {
@@ -66,7 +67,7 @@ class ProductGrid extends Component {
 	  	if (this.state.products) {
 			products = this.state.products.map(product => {
 	    		return (
-					<Product key={product._id} name={product.name} id={product._id}/>
+					<ProductTile key={product._id} name={product.name} price={product.price} id={product._id}/>
 				)
 			});
 	  	}
@@ -74,7 +75,7 @@ class ProductGrid extends Component {
 	    return (
 			<div className="row products-wrapper">
 				<div className="col-xs-12">
-			  		<h2 className="product-title">{this.props.routeParams.product.toUpperCase()}</h2>
+			  		<h2 className="products-title">{this.props.routeParams.product.toUpperCase()}</h2>
 				</div>
 				{products}
 			</div>

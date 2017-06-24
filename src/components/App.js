@@ -21,7 +21,7 @@ class App extends Component {
 	render() {
 		
 		return (
-			<div className="wrapper">
+			<div className="wrapper container-fluid">
 				<div className="row nav">
 			        <div className="col-xs-12">
 			          <h1 id="main-title">iStore</h1>
