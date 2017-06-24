@@ -26,7 +26,7 @@ class ProductGrid extends Component {
 	}
 
 	getProducts(type) {
-		ajax.get(SERVER_URL + '/product/' + type)
+		ajax.get(SERVER_URL + '/product/all/' + type)
 			.end((err, res) => {
 				if(!err && res) {
 					let products = JSON.parse(res.text);
