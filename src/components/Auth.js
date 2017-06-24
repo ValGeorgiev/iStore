@@ -1,4 +1,5 @@
 import ajax from 'superagent';
+import SERVER_URL from '../config';
 
 class Auth {
 	constructor() { 
@@ -6,50 +7,55 @@ class Auth {
         this.isAdmin= false; 
 	}
 
-    isAuthenticated(){
+    isAuthenticated() {
         return this.isAuthenticated;
     }
-    isAdmin(){
+
+    isAdmin() {
         return this.isAdmin;
     }
-    login(){
+
+    login() {
         this.isAuthenticated= true ; 
     }
-    logout(){
+
+    logout() {
         this.isAuthenticated= false ;         
     }
-    checkForToken(callback){
+
+    checkForToken(callback) {
         let token = window.localStorage.getItem('jwt-token');
         token = JSON.parse(token);
-        if(token == null ||  token == undefined ){
-              this.isAuthenticated= false;
-              callback(false);
-        }else{ 
+        if (!token) {
+            this.isAuthenticated = false;
+            callback(false);
+        } else { 
             this.checkTokenOnServer(token,callback);
         }
-
     }
 
-    checkTokenOnServer(token,callback){
-        let postParams = {token:token};
-        ajax.post('http://localhost:3001/user/check-token',postParams)
-        .end((error,response)=>{
-            if(!!error){
-                alert(error);
-                return 0; 
-            }
-            if(response.body.success == true){
-                this.isAuthenticated = true; 
-            }else{
-                this.isAuthenticated = false;
-                alert(response.body.err);
-            } 
-            callback(this.isAuthenticated);           
-        });
-    }
+    checkTokenOnServer(token, callback){
+        let postParams = {
+            token: token
+        };
 
+        ajax.post(SERVER_URL + '/user/check-token', postParams)
+            .end((error,response) => {
+                if (!!error) {
+                    alert(error);
+                    return 0; 
+                }
+                if (response.body.success) {
+                    this.isAuthenticated = true; 
+                } else {
+                    this.isAuthenticated = false;
+                    alert(response.body.err);
+                } 
+                callback(this.isAuthenticated);           
+            });
+    }
 }
-var auth = new Auth(); 
-export default auth;
+
+export default new Auth();
 
 

@@ -8,31 +8,14 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			times: [],
-			openSettings: false
+			isAuthenticated: false
 		};
 	}
 	
 	componentDidMount() {
-		auth.checkForToken((flag)=>this.setState({'isAuthenticated':flag}) ); 
-	}
-
-	clickSettings() {
-		this.setState({
-  			openSettings: true
-  		});
-	}
-
-	closeSettingsModal() {
-		this.setState({
-  			openSettings: false
-  		});
-	}
-
-	saveSettings() {
-		this.setState({
-  			openSettings: false
-  		});
+		auth.checkForToken((flag) => this.setState({
+			'isAuthenticated' : flag
+		}) ); 
 	} 
 
 	render() {
@@ -51,10 +34,7 @@ class App extends Component {
 			        </div>    
 			        <div className="col-xs-3">
 			          <Link to="/products/laptops">Laptops</Link>
-			        </div>    
-			        <div className="col-xs-3">
-			          <Link to="/day">Day</Link>
-			        </div>    
+			        </div>
 			        <div className="col-xs-3">
 			          {this.state.isAuthenticated ? <Link to="/register">Register</Link> : null } 
 			        </div>    
