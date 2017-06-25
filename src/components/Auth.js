@@ -78,8 +78,8 @@ class Auth {
                             alert(error);
                         }
                         else {
-                            let { email, firstName, lastName, type } = response.body;
-                            callback(email, firstName, lastName, type);
+                            let { email, firstName, lastName, type ,addresses} = response.body;
+                            callback(email, firstName, lastName, type, addresses);
                         }
                     });
             }
