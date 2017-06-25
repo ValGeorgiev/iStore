@@ -108,7 +108,25 @@ module.exports = function() {
 			} else {
 				res.send([]);
 			}
-		})
+		});
+	});
+	
+
+	productRoute.delete('/comment/:productid/:id', function(req, res) {
+		Comment.remove({
+			_id: req.params.id
+		}, function(err) {
+			Comment.find({
+				product: req.params.id
+			}).populate('user')
+			.exec(function(err, comments) {
+				if (!err && !!comments) {
+					res.send(comments);
+				} else {
+					res.send([]);
+				}
+			})
+		});
 	});
 	
 	return productRoute;

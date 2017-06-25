@@ -12,7 +12,8 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-			comments: []
+			comments: [],
+			comment: ''
 		}
 
 		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
@@ -35,6 +36,16 @@ class Product extends Component {
 		});
 	}
 
+	handleDeleteComment(id) {
+		ajax.del(`${SERVER_URL}/product/comment/${this.state.product._id}/${id}`)
+			.end((err, res) => {
+				let comments = JSON.parse(res.text);
+				this.setState({
+					comments: comments
+				});
+			});
+	}
+
 	handleCommentSubmit() {
 		ajax.post(SERVER_URL + '/product/add/comment')
 			.send({
@@ -52,9 +63,10 @@ class Product extends Component {
 				});
 
 				this.setState({
-					comments: comments
+					comments: comments,
+					comment: ''
 				});
-			})
+			});
 	}
 
 
@@ -109,6 +121,7 @@ class Product extends Component {
 	  			<div key={comment._id} className="comment-wrapper">
 	  				<span>{comment.user.first_name} {comment.user.last_name}:</span>
 	  				<p>{comment.content}</p>
+	  				<button onClick={this.handleDeleteComment.bind(this, comment._id)}>X</button>
 	  			</div>
   			)
 	  	}).reverse();	
