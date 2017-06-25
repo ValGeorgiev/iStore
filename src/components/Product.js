@@ -59,7 +59,7 @@ class Product extends Component {
 	    			<h2 className="pdp-product-title">{product.name}</h2>
 	    		</div>
 	    		<div className="col-xs-5 pdp-image-wrapper">
-	    			<img src={defaultImage} alt="default image"/>
+	    			<img src={defaultImage} alt="default"/>
 	    		</div>	    		
 	    		<div className="col-xs-7 pdp-info-wrapper">
 	    			<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>

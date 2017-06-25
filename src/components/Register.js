@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ajax from 'superagent';
-import auth from './Auth';
 class Register extends Component {
     constructor(props){
         super(props);
@@ -53,7 +52,9 @@ class Register extends Component {
 
     clearInputFields(){
         for(let member in this.state){
-            this.setState({[member]: ''});            
+            if(true){
+                this.setState({[member]: ''});            
+            }
         }
     }
     validatePassword(){
@@ -61,7 +62,7 @@ class Register extends Component {
             /^([a-zA-Z0-9!@#$%^&*]{6,16})$/.test(this.state.rePassword))
     }
     comparePasswords(){
-        return this.state.password == this.state.rePassword ;
+        return this.state.password === this.state.rePassword ;
     }
 
 	render() {

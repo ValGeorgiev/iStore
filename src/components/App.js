@@ -13,7 +13,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		auth.checkForToken((flag) => this.setState({
+		auth.checkForToken((flag) =>this.setState({
 			'isAuthenticated': flag
 		}));
 	}
@@ -26,12 +26,12 @@ class App extends Component {
 					<div className="col-xs-10">
 						<h1 id="main-title">iStore</h1>
 					</div>
-
+<div className="col-xs-1">
+					{!this.state.isAuthenticated ?  <Link to="/register">Register</Link> :  <Link to="/profile">Profile</Link>}
+					</div>
 					<div className="col-xs-1">
 						{!this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
 					</div>
-					{!this.state.isAuthenticated ? <div className="col-xs-1"> <Link to="/register">Register</Link></div> : null}
-					
 					<div className="col-xs-3">
 						<Link to="/products/phones">Phones</Link>
 					</div>
