@@ -4,6 +4,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/App';
 
 import ProductGrid from './components/ProductGrid';
+import Basket from './components/Basket';
 import Day from './components/Day';
 import Week from './components/Week';
 import Year from './components/Year';
@@ -15,7 +16,7 @@ import Error from './components/Error';
 import auth from './components/Auth';
 
 
-var isAuthenticated = true; 
+var isAuthenticated = true;
 
 
 function checkAuth(nextState, replace, callback) {
@@ -34,11 +35,12 @@ function logout(){
     window.localStorage.removeItem('jwt-token');
     window.location.replace('/');
 }
-        
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
 	    <Route path="/products/:product" component={ProductGrid}/>
+        <Route path="/basket" component={Basket}/>
       	<Route path="/profile" component={Profile} />
 	    <Route path="/scheduler" component={Scheduler}/>
 	    <Route path="/day" component={Day}/>

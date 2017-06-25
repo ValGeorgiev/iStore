@@ -13,7 +13,7 @@ class ProductGrid extends Component {
 			products: []
 		}
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		this.getProducts(nextProps.routeParams.product);
 	}
@@ -40,7 +40,7 @@ class ProductGrid extends Component {
 					});
 				}
 			});
-	}			
+	}
 
 	addProduct() {
 		ajax.post(SERVER_URL + '/product/add')
@@ -70,7 +70,7 @@ class ProductGrid extends Component {
 				)
 			});
 	  	}
-  	
+
 	    return (
 			<div className="row products-wrapper">
 				<div className="col-xs-12">
