@@ -29,6 +29,7 @@ function checkAuth(nextState, replace, callback) {
 
 function logout(){
     window.localStorage.removeItem('jwt-token');
+    window.localStorage.removeItem('profile-id');   
     window.location.replace('/');
 }
         
@@ -40,7 +41,7 @@ render((
       	<Route path="/profile" component={Profile} />
 	    <Route path="/register" component={Register} onEnter={checkAuth} />
       	<Route path="/login" component={Login} onEnter={checkAuth} />
-	    <Route path="/logout" onEnter={logout}/>
+	    <Route path="/logout" onEnter={auth.logout}/>
       <Route path="/error" component={Error}/>
     </Route>
   </Router>

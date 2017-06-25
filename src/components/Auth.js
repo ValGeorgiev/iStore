@@ -21,6 +21,9 @@ class Auth {
 
     logout() {
         this.isAuthenticated= false ;         
+        window.localStorage.removeItem('jwt-token');
+        window.localStorage.removeItem('profile-id');   
+        window.location.replace('/');
     }
 
     checkForToken(callback) {

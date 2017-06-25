@@ -31,18 +31,21 @@ class Login extends Component {
                 }
 				else if(response.body.success == true){
                     console.log('hello')
-                    this.login(response.body.token); 
+                    this.login(response.body.token,response.body.id); 
 				}
 			});
     }
-    login(token){
+    login(token,id){
         window.localStorage.setItem('jwt-token',JSON.stringify(token));
+        window.localStorage.setItem('profile-id',JSON.stringify(id));
         //clear localStorage counter
         window.localStorage.removeItem('counter');
         window.location.replace('/profile');
     }
     logout(){
         window.localStorage.removeItem('jwt-token');
+        window.localStorage.removeItem('profile-id');
+        
     }
 
 	render() {
@@ -50,11 +53,11 @@ class Login extends Component {
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-12 register">
                         <h2>Login:</h2>
                         <form  className="form-group" onSubmit={this.Authenticate}>
                             <div className="form-group">
-                                <label htmlFor="email">Email</label>
+                                <label htmlFor="email">Email: </label>
                                 <input type="email" id="email" className="form-control" name="email"/>
                             </div>
                             <div className="form-group">            
