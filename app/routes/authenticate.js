@@ -31,7 +31,7 @@ module.exports = function() {
 
 					// 5 hours expiration
 					var token = jwt.sign({data: email}, key , { expiresIn: 60 * 60 * 5 });
-					res.send({token:token,id:user._id,success:true});
+					res.send({token:token,id:user._id,userType:user.type,success:true});
 
 				}else{
 					res.send({err:'Your password is wrong, please try again.',counter:counter++ });								
@@ -83,6 +83,19 @@ module.exports = function() {
 				}
 			});
 		}
+	});
+
+	userRoute.post('/profile-data',(req, res) => {
+		let {userId} = req.body; 
+		User.findById(userId,(err,user)=>{
+			if(!!err){
+				console.log(err);
+				res.json('Something went wrong');
+			}else{
+				console.log(user);
+				res.json({email:user.email,firstName:user.first_name,lastName: user.last_name,type:user.type})
+			}
+		})
 	});
 
 	return userRoute;

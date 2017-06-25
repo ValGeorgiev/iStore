@@ -12,14 +12,11 @@ import Error from './components/Error';
 import auth from './components/Auth';
 
 
-var isAuthenticated = true; 
-
-
 function checkAuth(nextState, replace, callback) {
   auth.checkForToken((el)=>{
     if (el) {
       replace({
-        pathname: 'profile',
+        pathname: '',
         state: { nextPathname: nextState.location.pathname }
       })
     }
@@ -27,18 +24,25 @@ function checkAuth(nextState, replace, callback) {
   });
 }
 
-function logout(){
-    window.localStorage.removeItem('jwt-token');
-    window.localStorage.removeItem('profile-id');   
-    window.location.replace('/');
+function ProfileGuard(nextState, replace, callback) {
+  auth.checkForToken((el)=>{
+    if (el === false) {
+      replace({
+        pathname: '',
+        state: { nextPathname: nextState.location.pathname }
+      })
+    }
+    callback();
+  });
 }
-        
+
+
 render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
 	    <Route path="/products/:product" component={ProductGrid}/>
       	<Route path="/product/:id" component={Product} />
-      	<Route path="/profile" component={Profile} />
+      	<Route path="/profile" component={Profile}  onEnter={ProfileGuard}/>
 	    <Route path="/register" component={Register} onEnter={checkAuth} />
       	<Route path="/login" component={Login} onEnter={checkAuth} />
 	    <Route path="/logout" onEnter={auth.logout}/>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import auth from './Auth';
 import ajax from 'superagent';
-import { browserHistory } from 'react-router';
 
 class Login extends Component {
     constructor(){
@@ -29,24 +28,21 @@ class Login extends Component {
                     console.log(response.body.counter)
                     
                 }
-				else if(response.body.success == true){
+				else if(response.body.success === true){
                     console.log('hello')
-                    this.login(response.body.token,response.body.id); 
+                    this.login(response.body.token,response.body.userType,response.body.id); 
 				}
 			});
     }
-    login(token,id){
-        window.localStorage.setItem('jwt-token',JSON.stringify(token));
-        window.localStorage.setItem('profile-id',JSON.stringify(id));
+    login(token,userType,id){
+        auth.checkUserType(userType);
+        window.localStorage.setItem('jwt-token',token);
+        window.localStorage.setItem('profile-id',id);
         //clear localStorage counter
         window.localStorage.removeItem('counter');
         window.location.replace('/profile');
     }
-    logout(){
-        window.localStorage.removeItem('jwt-token');
-        window.localStorage.removeItem('profile-id');
-        
-    }
+
 
 	render() {
 
