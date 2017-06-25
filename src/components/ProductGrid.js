@@ -41,26 +41,8 @@ class ProductGrid extends Component {
 					});
 				}
 			});
-	}			
-
-	addProduct() {
-		ajax.post(SERVER_URL + '/product/add')
-			.send({
-				name: "iPhone 7",
-				description: "The newest iPhone",
-				color: "black",
-				quantity: 200,
-				price: "1005$"
-			})
-			.end((err, product) => {
-				if (!err && product) {
-					console.log(product);
-				} else {
-					console.error(err);
-				}
-			});
 	}
-
+	
   	render() {
 	  	let products;
 
