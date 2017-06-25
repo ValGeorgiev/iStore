@@ -3,6 +3,7 @@ import ajax from 'superagent';
 
 import SERVER_URL from '../config';
 import defaultImage from '../../public/img/default_product.jpg';
+import '../css/product.css';
 
 class Product extends Component {
 
@@ -57,21 +58,25 @@ class Product extends Component {
 	    		<div className="col-xs-12">
 	    			<h2 className="pdp-product-title">{product.name}</h2>
 	    		</div>
-	    		<div className="col-xs-7 pdp-image-wrapper">
+	    		<div className="col-xs-5 pdp-image-wrapper">
 	    			<img src={defaultImage} alt="default image"/>
 	    		</div>	    		
-	    		<div className="col-xs-5 pdp-info-wrapper">
-	    			<p>Price: <span>{product.price}</span></p>
+	    		<div className="col-xs-7 pdp-info-wrapper">
+	    			<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>
 	    			<div className="pdp-colors-wrapper">
-	    				{colors}
+	    				<span>Colors: </span>
+	    				<div> 
+	    					{colors}
+    					</div>
 	    			</div>
 	    			<div className="pdp-add-wrapper">
 	    				<input className="pdp-product-quantity" type="text" defaultValue="1"/>
 						<button data-id={product._id} className="pdp-add-product">Add Product</button>
 	    			</div>
 	    		</div>
-    			<div className="col-xs-12">
-    				<p className="pdp-product-description">{product.description}</p>
+    			<div className="col-xs-12 pdp-description-wrapper">
+    				<span>Product Description:</span>
+    				<p>{product.description}</p>
     			</div>
 			</div>
 	  	);
