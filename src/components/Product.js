@@ -107,7 +107,7 @@ class Product extends Component {
 	  	let comments = this.state.comments.map(comment => {
 	  		return (
 	  			<div key={comment._id} className="comment-wrapper">
-	  				<span>{comment.user.first_name} {comment.user.last_name}</span>
+	  				<span>{comment.user.first_name} {comment.user.last_name}:</span>
 	  				<p>{comment.content}</p>
 	  			</div>
   			)
@@ -142,7 +142,9 @@ class Product extends Component {
     			<div className="col-xs-12 add-pdp-comment">
     				<span>Comment: </span> 
     				<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
-    				<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
+    				<div>
+    					<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
+    				</div>
     			</div>
     			<div className="col-xs-12 pdp-comments">
     				{comments}

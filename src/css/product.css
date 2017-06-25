@@ -80,3 +80,50 @@
 	padding-left: 10px;
 }
 
+.add-pdp-comment {
+	margin: 20px 0;
+}
+
+.add-pdp-comment span {
+	font-size: 18px;
+	display: block;
+}
+
+.add-pdp-comment textarea {
+	padding: 5px;
+	width: 80%;
+	height: 110px;
+	border-radius: 5px;
+	resize: none;
+}
+
+.add-pdp-comment div {
+    height: 110px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -55px;
+    margin-left: 5px;
+}
+
+.add-comment {
+	height: 70px;
+	width: 160px;
+	border-radius: 5px;
+	border: 1px solid silver;
+	font-size: 21px;
+}
+
+.comment-wrapper {
+	margin: 15px 0 20px 10px;
+}
+
+.comment-wrapper span {
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.comment-wrapper p {
+	margin-top: 10px;
+	padding-left: 10px;
+	font-size: 16px;
+}
