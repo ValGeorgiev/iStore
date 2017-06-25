@@ -33,7 +33,6 @@ module.exports = function() {
 			if (!!err) {
 				res.send(err);
 			} else if (!!product) {
-				console.log(product);
 				res.send(product);
 			} else {
 				res.send({
@@ -91,9 +90,6 @@ module.exports = function() {
 						});
 					}
 				});
-
-
-
 			} else {
 				res.send({
 					err: "No user"
@@ -104,10 +100,10 @@ module.exports = function() {
 
 	productRoute.get('/comments/:id', function(req, res) {
 		Comment.find({
-
-		}, function(err, comments) {
+			product: req.params.id
+		}).populate('user')
+		.exec(function(err, comments) {
 			if (!err && !!comments) {
-				console.log(comments);
 				res.send(comments);
 			} else {
 				res.send([]);

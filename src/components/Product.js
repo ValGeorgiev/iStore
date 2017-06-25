@@ -12,8 +12,7 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-			comments: [],
-			comment: ''
+			comments: []
 		}
 
 		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
@@ -44,7 +43,17 @@ class Product extends Component {
 				user_id: window.localStorage.getItem('profile-id')
 			})
 			.end((err, res) => {
-				console.log(res);
+				let comment = JSON.parse(res.text);
+				let comments = this.state.comments;
+				comments.push({
+					user: comment.user,
+					content: comment.content,
+					_id: comment._id
+				});
+
+				this.setState({
+					comments: comments
+				});
 			})
 	}
 
@@ -57,9 +66,8 @@ class Product extends Component {
 					this.setState({
 						product: product
 					});
-					//this.getProductComments(product._id);
+					this.getProductComments(product._id);
 				} else {
-					console.log('There was an error', err);
 					this.setState({
 						product: {}
 					});
@@ -68,10 +76,14 @@ class Product extends Component {
 	}
 
 	getProductComments(id) {
-		ajax.get(SERVER_URL + '/comments/' + id)
+		ajax.get(SERVER_URL + '/product/comments/' + id)
 			.end((err, res) => {
 				if (!err && !!res) {
-					console.log(res);
+					let comments = JSON.parse(res.text);
+
+					this.setState({
+						comments: comments
+					});
 				} else {
 					this.setState({
 						comments: []
@@ -91,6 +103,17 @@ class Product extends Component {
 				)
 			});
 	  	}
+
+	  	let comments = this.state.comments.map(comment => {
+	  		return (
+	  			<div key={comment._id} className="comment-wrapper">
+	  				<span>{comment.user.first_name} {comment.user.last_name}</span>
+	  				<p>{comment.content}</p>
+	  			</div>
+  			)
+	  	}).reverse();	
+
+
 	    return(
 	    	<div className="row product-container">
 	    		<div className="col-xs-12">
@@ -116,11 +139,15 @@ class Product extends Component {
     				<span>Product Description:</span>
     				<p>{product.description}</p>
     			</div>
-    			<div className="col-xs-12 pdp-comments">
+    			<div className="col-xs-12 add-pdp-comment">
     				<span>Comment: </span> 
     				<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
     				<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
     			</div>
+    			<div className="col-xs-12 pdp-comments">
+    				{comments}
+    			</div>
+
 			</div>
 	  	);
 	}

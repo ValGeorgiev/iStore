@@ -47,11 +47,12 @@ class Auth {
             token: token
         };
 
-        ajax.post(SERVER_URL + '/user/check-token', postParams)
+        ajax.post(SERVER_URL + '/user/check-token')
+            .send(postParams)
             .end((error, response) => {
                 if (!!error) {
                     alert(error);
-                    return 0;
+                    return;
                 }
                 if (response.body.success) {
                     this.isAuthenticated = true;
@@ -66,7 +67,7 @@ class Auth {
 
     getUserData(callback) {
 
-        this.checkForToken((Authtrigger) => {
+        this.checkForToken(() => {
             if (this.isAuthenticated) {
                 console.log('calling user data function');
                 let userId = window.localStorage.getItem('profile-id');
