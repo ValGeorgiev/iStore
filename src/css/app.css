@@ -24,6 +24,21 @@ input, textarea {
   outline: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+a {
+  text-decoration: none;
+}
+
+a:active {
+  color: #1A325B;
+}
+
 .wrapper {
   margin: 20px 0 25px;  
 }
@@ -69,91 +84,7 @@ input, textarea {
   margin-bottom: 0;
 }
 
-.scheduler-title {
+.col-md-12.register {
   text-align: center;
-  margin: 15px 0;
-}
-
-.settings-icon {
-  position: absolute;
-  top: 35px;
-  right: 100px;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-}
-
-.settings-modal {
-  text-align: center;
-  position: fixed;
-  background: #FAFAFA;
-  height: 400px;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  margin-top: -200px;
-  margin-left: -250px;
-  z-index: 9999;
-  border-radius: 10px;
-}
-
-.modal-background {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: '';
-  z-index: 9998;
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.settings-modal h2 {
-  color: #033DA0;
-  margin-top: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #C2E0FE;
-  margin-bottom: 20px;
-}
-
-.start-time {
-  text-align: left;
-  margin: 40px;
-}
-
-.start-time select .dsadas .sad{
-  height: 30px;
-  border-radius: 5px;
-  width: 100px;
-  margin-left: 20px;
-  text-align: center;
-}
-
-.end-time select {
-  height: 30px;
-  border-radius: 5px;
-  width: 100px;
-  margin-left: 23px;
-  text-align: center;
-}
-
-.end-time {
-  text-align: left;
-  margin-left: 40px;
-  margin-bottom: 40px;
-}
-
-.save-btn {
-  width: 100px;
-  height: 40px;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 0;
-  background-color: #2F7AF9;
-  color: white;
-  -webkit-box-shadow: 1px 0px 10px 1px rgba(148,145,148,1);
-  -moz-box-shadow: 1px 0px 10px 1px rgba(148,145,148,1);
-  box-shadow: 1px 0px 10px 1px rgba(148,145,148,1);
-  cursor: pointer;
 
 }

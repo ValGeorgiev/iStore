@@ -1,0 +1,82 @@
+.pdp-product-title {
+	font-size: 28px;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.pdp-image-wrapper {
+	-webkit-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	-moz-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 0;
+}
+
+.pdp-image-wrapper img {
+	width: 100%;
+}
+
+.pdp-info-wrapper {
+	padding: 40px;
+}
+
+.pdp-info-wrapper .pdp-price-wrapper {
+	font-size: 22px;
+}
+
+.pdp-info-wrapper .pdp-price-wrapper span {
+	font-size: 25px;
+	padding-left: 10px;
+}
+
+.pdp-colors-wrapper {
+	padding: 20px 0;
+}
+.pdp-colors-wrapper span {
+	font-size: 20px;
+}
+
+.pdp-colors-wrapper div {
+	padding-top: 10px;
+	padding-left: 15px;
+}
+
+.pdp-add-wrapper {
+	padding: 20px 0; 
+}
+
+.pdp-add-wrapper input {
+	width: 50px;
+	height: 50px;
+	font-size: 23px;
+	text-align: center;
+	border-radius: 5px;
+	border: 0;
+	-webkit-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	-moz-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+}
+
+.pdp-add-wrapper button {
+	height: 50px;
+	width: 200px;
+	font-size: 24px;
+	border-radius: 5px;
+	border: 1px solid silver;
+	margin-left: 20px;
+}
+
+.pdp-description-wrapper {
+	padding: 20px 14px;
+}
+
+.pdp-description-wrapper span {
+	font-size: 21px;
+	font-weight: bold;
+}
+.pdp-description-wrapper p {
+	margin-top: 10px;
+	padding-left: 10px;
+}
+

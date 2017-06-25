@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
-import auth  from './Auth';
+import auth from './Auth';
 import '../css/app.css';
 
 class App extends Component {
@@ -8,64 +8,45 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			times: [],
-			openSettings: false
+			isAuthenticated: false
 		};
 	}
-	
+
 	componentDidMount() {
-		auth.checkForToken((flag)=>this.setState({'isAuthenticated':flag}) ); 
+		auth.checkForToken((flag) => this.setState({
+			'isAuthenticated': flag
+		}));
 	}
-
-	clickSettings() {
-		this.setState({
-  			openSettings: true
-  		});
-	}
-
-	closeSettingsModal() {
-		this.setState({
-  			openSettings: false
-  		});
-	}
-
-	saveSettings() {
-		this.setState({
-  			openSettings: false
-  		});
-	} 
 
 	render() {
-		
+
 		return (
-			<div className="wrapper">
+			<div className="wrapper container-fluid">
 				<div className="row nav">
-			        <div className="col-xs-12">
-			          <h1 id="main-title">iStore</h1>
-			        </div>
-			        <div className="col-xs-3">
-			          <Link to="/products/phones">Phones</Link>
-			        </div>    
-			        <div className="col-xs-3">
-			          <Link to="/products/tv">TV</Link>
-			        </div>    
-			        <div className="col-xs-3">
-			          <Link to="/products/laptops">Laptops</Link>
-			        </div>    
-			        <div className="col-xs-3">
-			          <Link to="/day">Day</Link>
-			        </div>    
-			        <div className="col-xs-3">
-			          {this.state.isAuthenticated ? <Link to="/register">Register</Link> : null } 
-			        </div>    
-			        <div className="col-xs-3">
-			          {this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link> } 
-			        </div>    
-		        </div>
-				{this.props.children}		
-  			</div>
+					<div className="col-xs-10">
+						<h1 id="main-title">iStore</h1>
+					</div>
+
+					<div className="col-xs-1">
+						{!this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
+					</div>
+					{!this.state.isAuthenticated ? <div className="col-xs-1"> <Link to="/register">Register</Link></div> : null}
+					
+					<div className="col-xs-3">
+						<Link to="/products/phones">Phones</Link>
+					</div>
+					<div className="col-xs-3">
+						<Link to="/products/tv">TV</Link>
+					</div>
+					<div className="col-xs-3">
+						<Link to="/products/laptops">Laptops</Link>
+					</div>
+
+				</div>
+				{this.props.children}
+			</div>
 		);
- 	}
+	}
 }
 
 

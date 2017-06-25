@@ -44,10 +44,17 @@ class Register extends Component {
                     }
                     else{
                         alert(response.text);
+                        this.clearInputFields();
                     }
                 });
         }                    
         event.preventDefault();
+    }
+
+    clearInputFields(){
+        for(let member in this.state){
+            this.setState({[member]: ''});            
+        }
     }
     validatePassword(){
         return  (/^([a-zA-Z0-9!@#$%^&*]{6,16})$/.test(this.state.password) &&
@@ -59,9 +66,9 @@ class Register extends Component {
 
 	render() {
 		return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 register">
                     <h2>Register:</h2>
                     <form  className="form-group" onSubmit={this.register}>
                         <div className="form-group">

@@ -31,7 +31,7 @@ module.exports = function() {
 
 					// 5 hours expiration
 					var token = jwt.sign({data: email}, key , { expiresIn: 60 * 60 * 5 });
-					res.send({token:token, success:true});
+					res.send({token:token,id:user._id,success:true});
 
 				}else{
 					res.send({err:'Your password is wrong, please try again.',counter:counter++ });								
