@@ -21,8 +21,8 @@ mongoose.connect(config.database, function(err){
 app.use(morgan('dev'));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ 
-	extended: false 
+app.use(bodyParser.urlencoded({
+	extended: false
 }));
 
 // parse application/json
@@ -37,6 +37,9 @@ app.use('/product', product);
 
 var authenticate = require('./app/routes/authenticate')();
 app.use('/user', authenticate);
+
+var basket = require('./app/routes/basket')();
+app.use('/basket', product);
 
 app.listen(config.port, function(err) {
 	if ( err ) {

@@ -110,7 +110,7 @@ module.exports = function() {
 			}
 		});
 	});
-	
+
 
 	productRoute.delete('/comment/:productid/:id', function(req, res) {
 		Comment.remove({
@@ -128,6 +128,6 @@ module.exports = function() {
 			})
 		});
 	});
-	
+
 	return productRoute;
 }

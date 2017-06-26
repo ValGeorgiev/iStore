@@ -124,22 +124,23 @@ class Product extends Component {
 	  				<button onClick={this.handleDeleteComment.bind(this, comment._id)}>X</button>
 	  			</div>
   			)
-	  	}).reverse();	
+	  	}).reverse();
 
 
 	    return(
+
 	    	<div className="row product-container">
 	    		<div className="col-xs-12">
 	    			<h2 className="pdp-product-title">{product.name}</h2>
 	    		</div>
 	    		<div className="col-xs-5 pdp-image-wrapper">
 	    			<img src={defaultImage} alt="default"/>
-	    		</div>	    		
+	    		</div>
 	    		<div className="col-xs-7 pdp-info-wrapper">
 	    			<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>
 	    			<div className="pdp-colors-wrapper">
 	    				<span>Colors: </span>
-	    				<div> 
+	    				<div>
 	    					{colors}
     					</div>
 	    			</div>
@@ -153,7 +154,7 @@ class Product extends Component {
     				<p>{product.description}</p>
     			</div>
     			<div className="col-xs-12 add-pdp-comment">
-    				<span>Comment: </span> 
+    				<span>Comment: </span>
     				<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
     				<div>
     					<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
