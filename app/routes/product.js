@@ -8,9 +8,9 @@ var Product = require('../models/product');
 module.exports = function() {
 	let productRoute = express.Router();
 
-	productRoute.get('/all/:product', function(req, res) {
+	productRoute.get('/all/:type', function(req, res) {
 		Product.find({
-			category: { $in: [req.params['product']] }
+			category: { $in: [req.params['type']] }
 		}, function(err, products) {
 			if (!!err) {
 				res.send(err);
@@ -57,7 +57,7 @@ module.exports = function() {
 			}
 			res.send(_product);
 		});
-	})
-	
+	});
+
 	return productRoute;
 }

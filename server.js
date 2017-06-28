@@ -39,7 +39,7 @@ var authenticate = require('./app/routes/authenticate')();
 app.use('/user', authenticate);
 
 var basket = require('./app/routes/basket')();
-app.use('/basket', product);
+app.use('/basket', basket);
 
 app.listen(config.port, function(err) {
 	if ( err ) {

@@ -31,7 +31,7 @@ class App extends Component {
 						{!this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
 					</div>
 					{!this.state.isAuthenticated ? <div className="col-xs-1"> <Link to="/register">Register</Link></div> : null}
-					
+
 					<div className="col-xs-3">
 						<Link to="/products/phones">Phones</Link>
 					</div>
@@ -41,6 +41,10 @@ class App extends Component {
 					<div className="col-xs-3">
 						<Link to="/products/laptops">Laptops</Link>
 					</div>
+
+                    <div className="col-xs-1">
+                        <Link to="/basket">Basket</Link>
+                    </div>
 
 				</div>
 				{this.props.children}

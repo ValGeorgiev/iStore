@@ -4,7 +4,7 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/App';
 
 import ProductGrid from './components/ProductGrid';
-import Basket from './components/Basket';
+import BasketGrid from './components/BasketGrid';
 import Product from './components/Product';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -38,7 +38,7 @@ render((
   <Router history={browserHistory}>
     <Route path="/" component={App}>
 	    <Route path="/products/:product" component={ProductGrid}/>
-        <Route path="/basket" component={Basket}/>
+        <Route path="/basket" component={BasketGrid}/>
       	<Route path="/product/:id" component={Product} />
       	<Route path="/profile" component={Profile} />
 	    <Route path="/register" component={Register} onEnter={checkAuth} />
