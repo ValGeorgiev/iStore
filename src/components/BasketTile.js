@@ -44,31 +44,7 @@ class BasketTile extends Component {
 
     render() {
         return (
-            <div className="item">
-                <div className="buttons">
-                    <span className="delete-btn"></span>
-                    <span className="save-btn"></span>
-                </div>
-
-                <div className="image">
-                    <img src={defaultImage} alt="default product" />
-                </div>
-
-                <div className="description">
-                    <span>Description</span>
-                </div>
-
-                <div className="quantitiy">
-                    <button className="plus-btn" type="button" name="button">
-                        +
-                    </button>
-                    <input type="text" name="name" value="1" />
-                    <button className="minus-btn" type="button" name="button">
-                        -
-                    </button>
-                </div>
-
-                <div class="total-price">$542</div>
+            <div className="container">
 
 
             </div>

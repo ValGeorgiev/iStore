@@ -65,7 +65,7 @@ class BasketGrid extends Component {
         });
 
         return (
-            <div className="shopping-cart">
+            <div className="container">
                 <div className="title">
                     Basket
                 </div>

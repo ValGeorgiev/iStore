@@ -12,7 +12,7 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-            quantity: 0
+            quantity: 0,
             comments: [],
             comment: ''
         }
