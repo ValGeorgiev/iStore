@@ -117,7 +117,7 @@ module.exports = function() {
 			_id: req.params.id
 		}, function(err) {
 			Comment.find({
-				product: req.params.id
+				product: req.params.productid
 			}).populate('user')
 			.exec(function(err, comments) {
 				if (!err && !!comments) {

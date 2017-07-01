@@ -27,7 +27,7 @@ class ProductForm extends Component {
 	}
 
 	handleSubmit() {
-		addProduct();
+		this.addProduct();
 	}
 
 	handleNameChange(event) {
@@ -92,7 +92,7 @@ class ProductForm extends Component {
 					console.error(err);
 				}
 			});
-		}
+			
 	}
 
   	render() {
@@ -132,4 +132,4 @@ class ProductForm extends Component {
   	}
 }
 
-export default ProductGrid;
+export default ProductForm;

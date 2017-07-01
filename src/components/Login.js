@@ -5,13 +5,13 @@ import ajax from 'superagent';
 class Login extends Component {
     constructor(){
         super();
-        this.state={
+        this.state = {
 
         };
-        this.Authenticate = this.Authenticate.bind(this);
+        this.authenticate = this.authenticate.bind(this);
     }
 
-	Authenticate(event){
+	authenticate(event){
         console.log(event.target.email.value);
         event.preventDefault();
         let postParams = {email:event.target.email.value,password: event.target.password.value};
@@ -51,7 +51,7 @@ class Login extends Component {
                 <div className="row">
                     <div className="col-md-12 register">
                         <h2>Login:</h2>
-                        <form  className="form-group" onSubmit={this.Authenticate}>
+                        <form  className="form-group" onSubmit={this.authenticate}>
                             <div className="form-group">
                                 <label htmlFor="email">Email: </label>
                                 <input type="email" id="email" className="form-control" name="email"/>

@@ -8,26 +8,47 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			isAuthenticated: false
+			isAuthenticated: false,
+			user: {},
+			isAdmin: false
 		};
 	}
 
-	componentDidMount() {
-		auth.checkForToken((flag) =>this.setState({
-			'isAuthenticated': flag
-		}));
+	componentWillMount() {
+		console.log('test');
+		auth.getUserData((data) => {
+		console.log(data)
+			this.setState({
+				'isAuthenticated': data.isAuthenticated,
+				'user': data.user,
+				'isAdmin': data.isAdmin
+			})
+		});
+	}
+
+	renderAdminLink() {
+		
+		if (this.state.isAdmin) {
+
+			return (
+				<div className="col-xs-12">
+					<Link to="/admin/product">Add Product</Link>
+				</div>
+			);
+		}
+		return '';
 	}
 
 	render() {
-
+		let adminLink = this.renderAdminLink();
 		return (
 			<div className="wrapper container-fluid">
 				<div className="row nav">
 					<div className="col-xs-10">
 						<h1 id="main-title">iStore</h1>
 					</div>
-<div className="col-xs-1">
-					{!this.state.isAuthenticated ?  <Link to="/register">Register</Link> :  <Link to="/profile">Profile</Link>}
+					<div className="col-xs-1">
+						{!this.state.isAuthenticated ?  <Link to="/register">Register</Link> :  <Link to="/profile">Profile</Link>}
 					</div>
 					<div className="col-xs-1">
 						{!this.state.isAuthenticated ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
@@ -43,6 +64,7 @@ class App extends Component {
 					</div>
 
 				</div>
+				{adminLink}
 				{this.props.children}
 			</div>
 		);
