@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import auth from './Auth';
 import ajax from 'superagent';
 import update from 'immutability-helper';
+import Address from './Address';
 
 class Profile extends Component {
     constructor(props) {
@@ -13,7 +14,6 @@ class Profile extends Component {
             addressTrigger: false,
             showAddressList: false,
             addresses: [],
-            showAddressInfo: [],
             newAddressObject: {
                 address: '',
                 postal: '',
@@ -30,12 +30,14 @@ class Profile extends Component {
 
     componentWillMount() {
         auth.getUserData(this.setUserData);
+
     }
 
 
     setUserData(email, firstName, lastName, type, addresses) {
         auth.checkUserType(type);
-
+        console.log(type)
+        console.log(auth.isAdmin)
         this.setState({ 'email': email });
         this.setState({ 'firstName': firstName });
         this.setState({ 'lastName': lastName });
@@ -56,11 +58,7 @@ class Profile extends Component {
         this.setState({ 'addressTrigger': true });
     }
 
-    showAddressInfo(index, trigger) {
-        var tmpArray = this.state.showAddressInfo.slice();
-        tmpArray[index] = trigger;
-        this.setState({ showAddressInfo: tmpArray });
-    }
+
 
     handleChange(event) {
 
@@ -107,20 +105,7 @@ class Profile extends Component {
 
                 return (
                     <div key={index}>
-                        <div>{address.address}
-                            {!this.state.showAddressInfo[index] ?
-                                <button onClick={this.showAddressInfo.bind(this, index, true)} >Expand</button> :
-                                <button onClick={this.showAddressInfo.bind(this, index, false)} >Hide</button>}
-                        </div>
-
-                        {this.state.showAddressInfo[index] ?
-                            <div>
-                                <p>City: {address.city}</p>
-                                <p>Country: {address.country}</p>
-                                <p>Postal Code: {address.postal}</p>
-
-                            </div> : null
-                        }
+                        <Address index={index} address={address.address} city={address.city} country={address.country} postal={address.postal}></Address>
                     </div>
                 )
             });
