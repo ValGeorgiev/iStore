@@ -14,7 +14,6 @@ import {
   ProductForm
 } from './components';
 
-
 function checkAuth(nextState, replace, callback) {
   Auth.checkForToken((el)=>{
     if (el) {
@@ -26,6 +25,7 @@ function checkAuth(nextState, replace, callback) {
     callback();
   });
 }
+
 
 function ProfileGuard(nextState, replace, callback) {
   Auth.checkForToken((el)=>{
@@ -50,6 +50,7 @@ render((
       <Route path="/login" component={Login}  />
       <Route path="/logout" onEnter={Auth.logout}/>
       <Route path="/admin/product" component={ProductForm} />
+      <Route path="/basket" component={BasketGrid}/>
       <Route path="/error" component={Error}/>
     </Route>
   </Router>

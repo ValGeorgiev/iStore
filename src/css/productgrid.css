@@ -21,7 +21,6 @@
 
 .image-wrapper img {
 	width: 100%;
-
 }
 
 .product-wrapper .product-name {
@@ -65,4 +64,13 @@
 	border: 1px solid silver;
 	font-size: 21px;
 	cursor: pointer;
+}
+
+.add-wrapper .remove-product {
+    height: 40px;
+    width: 85px;
+    border-radius: 6px;
+    border: 1px solid silver;
+    font-size: 21px;
+    cursor: pointer;
 }

@@ -63,6 +63,10 @@ class App extends Component {
 						<Link to="/products/laptops">Laptops</Link>
 					</div>
 
+                    <div className="col-xs-1">
+                        <Link to="/basket">Basket</Link>
+                    </div>
+
 				</div>
 				{adminLink}
 				{this.props.children}

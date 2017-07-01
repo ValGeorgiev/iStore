@@ -5,6 +5,8 @@ import SERVER_URL from '../config';
 import defaultImage from '../../public/img/default_product.jpg';
 import '../css/product.css';
 
+import AddProduct from './AddProduct';
+
 class Product extends Component {
 
 	constructor(props) {
@@ -12,9 +14,9 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-			comments: [],
-			comment: ''
-		}
+            comments: [],
+            comment: ''
+        }
 
 		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
 		this.handleCommentChange =  this.handleCommentChange.bind(this);
@@ -22,12 +24,12 @@ class Product extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.getProduct(nextProps.routeParams.id);
-	}
+    }
 
 	componentWillMount() {
 		if (!!this.state.product ) {
 			this.getProduct(this.props.routeParams.id);
-		}
+        }
 	}
 
 	handleCommentChange(event) {
@@ -124,36 +126,34 @@ class Product extends Component {
 	  				<button onClick={this.handleDeleteComment.bind(this, comment._id)}>X</button>
 	  			</div>
   			)
-	  	}).reverse();	
+	  	}).reverse();
 
 
 	    return(
+
 	    	<div className="row product-container">
 	    		<div className="col-xs-12">
 	    			<h2 className="pdp-product-title">{product.name}</h2>
 	    		</div>
 	    		<div className="col-xs-5 pdp-image-wrapper">
 	    			<img src={defaultImage} alt="default"/>
-	    		</div>	    		
+	    		</div>
 	    		<div className="col-xs-7 pdp-info-wrapper">
 	    			<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>
 	    			<div className="pdp-colors-wrapper">
 	    				<span>Colors: </span>
-	    				<div> 
+	    				<div>
 	    					{colors}
     					</div>
 	    			</div>
-	    			<div className="pdp-add-wrapper">
-	    				<input className="pdp-product-quantity" type="text" defaultValue="1"/>
-						<button data-id={product._id} className="pdp-add-product">Add Product</button>
-	    			</div>
+	    			<AddProduct product={product} />
 	    		</div>
     			<div className="col-xs-12 pdp-description-wrapper">
     				<span>Product Description:</span>
     				<p>{product.description}</p>
     			</div>
     			<div className="col-xs-12 add-pdp-comment">
-    				<span>Comment: </span> 
+    				<span>Comment: </span>
     				<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
     				<div>
     					<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
