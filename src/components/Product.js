@@ -5,6 +5,8 @@ import SERVER_URL from '../config';
 import defaultImage from '../../public/img/default_product.jpg';
 import '../css/product.css';
 
+import AddProduct from './AddProduct';
+
 class Product extends Component {
 
 	constructor(props) {
@@ -12,12 +14,10 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-            quantity: 0,
             comments: [],
             comment: ''
         }
-        this.addToBasket = this.addToBasket.bind(this);
-        this.handleQuantityChange = this.handleQuantityChange.bind(this);
+
 		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
 		this.handleCommentChange =  this.handleCommentChange.bind(this);
 	}
@@ -89,36 +89,6 @@ class Product extends Component {
 			});
 	}
 
-    addToBasket() {
-        let product = this.state.product;
-        let currentUserId = window.localStorage.getItem('profile-id');
-        currentUserId = JSON.parse(currentUserId);
-        ajax.post(SERVER_URL + '/basket/')
-            .send({
-                user_id: currentUserId,
-                product_id: product._id,
-                color: product.color,
-                quantity: this.state.quantity,
-                price: product.price
-            })
-            .end((err, product) => {
-                if(!err && product) {
-                    console.log(product);
-                }
-                else {
-                    console.log(err);
-                }
-            });
-    }
-
-    handleQuantityChange(event) {
-        const product = this.state.product;
-        this.setState({
-            product: product,
-            quantity: event.target.value
-        });
-    }
-
 	getProductComments(id) {
 		ajax.get(SERVER_URL + '/product/comments/' + id)
 			.end((err, res) => {
@@ -176,11 +146,7 @@ class Product extends Component {
 	    					{colors}
     					</div>
 	    			</div>
-	    			<div className="pdp-add-wrapper">
-                        <input className="pdp-product-quantity" type="text" defaultValue="1"
-                               value={this.state.quantity} onChange={this.handleQuantityChange} />
-						<button data-id={product._id} onClick={this.addToBasket} className="pdp-add-product">Add Product</button>
-	    			</div>
+	    			<AddProduct product={product} />
 	    		</div>
     			<div className="col-xs-12 pdp-description-wrapper">
     				<span>Product Description:</span>

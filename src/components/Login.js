@@ -26,11 +26,11 @@ class Login extends Component {
                     window.localStorage.setItem('counter',response.body.counter);
                     console.log('counter')
                     console.log(response.body.counter)
-                    
+
                 }
 				else if(response.body.success === true){
                     console.log('hello')
-                    this.login(response.body.token,response.body.userType,response.body.id); 
+                    this.login(response.body.token,response.body.userType,response.body.id);
 				}
 			});
     }
@@ -56,7 +56,7 @@ class Login extends Component {
                                 <label htmlFor="email">Email: </label>
                                 <input type="email" id="email" className="form-control" name="email"/>
                             </div>
-                            <div className="form-group">            
+                            <div className="form-group">
                                 <label htmlFor="password">Password: </label>
                                 <input type="password" id="password" className="form-control" name="password" />
                             </div>
@@ -65,7 +65,7 @@ class Login extends Component {
                     </div>
                 </div>
             </div>
-        );		
+        );
 	}
 }
 

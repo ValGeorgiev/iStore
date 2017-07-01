@@ -4,6 +4,7 @@ import ajax from 'superagent';
 import Product from './Product';
 import BasketTile from './BasketTile';
 import SERVER_URL from '../config';
+import '../css/basket.css';
 
 class BasketGrid extends Component {
 
@@ -17,13 +18,14 @@ class BasketGrid extends Component {
 
     getBasketProducts() {
         let currentUser = window.localStorage.getItem("profile-id");
-        currentUser = JSON.parse(currentUser);
+        //currentUser = JSON.parse(currentUser);
         ajax.get(SERVER_URL + '/basket/' + currentUser)
             .end((err, res) => {
                 if(!err && res) {
                     let products = JSON.parse(res.text);
+                    console.log(products)
                     this.setState({
-                        added_products: products
+                         added_products: products
                     });
                 }
                 else {
@@ -61,13 +63,14 @@ class BasketGrid extends Component {
 
     render() {
         const basket_products = this.state.added_products.map(product => {
-            return (< BasketTile key={product._id} product={product} />);
+            return (< BasketTile key={product._id} product={product.product} quantity={product.quantity} />);
         });
+        console.log(this.state.added_products);
 
         return (
-            <div className="container">
-                <div className="title">
-                    Basket
+            <div className="row basket-wrapper">
+                <div className="col-xs-12">
+                    <h2 className="basket-title">BASKET</h2>
                 </div>
                 {basket_products}
             </div>

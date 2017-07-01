@@ -44,8 +44,21 @@ class BasketTile extends Component {
 
     render() {
         return (
-            <div className="container">
-
+            <div className="col-xs-12 basket-product-wrapper">
+                <div className="col-xs-2">
+                    <Link to={`product/${this.props.product._id}`}>
+                        <div className="image-wrapper">
+                            <img src={defaultImage} alt="default product" className="product-image"/>
+                        </div>
+                    </Link>
+                    <p className="basket-product-name">{this.props.product.name}</p>
+                </div>
+                <div className="col-xs-6 basket-description-wrapper">
+                    {this.props.product.description}
+                </div>
+                <div className="col-xs-3 basket-qtty-wrapper">
+                    {this.props.quantity}
+                </div>
 
             </div>
         );
