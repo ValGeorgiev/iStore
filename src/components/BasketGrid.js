@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ajax from 'superagent';
-
-import Product from './Product';
 import BasketTile from './BasketTile';
 import SERVER_URL from '../config';
 import '../css/basket.css';

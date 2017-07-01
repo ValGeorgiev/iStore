@@ -11,33 +11,35 @@ import {
   Error,
   Login,
   Register,
-  ProductForm
+  ProductForm,
+  BasketGrid
 } from './components';
 
-function checkAuth(nextState, replace, callback) {
-  Auth.checkForToken((el)=>{
-    if (el) {
-      replace({
-        pathname: '',
-        state: { nextPathname: nextState.location.pathname }
-      })
-    }
-    callback();
-  });
-}
+
+// function checkAuth(nextState, replace, callback) {
+//   Auth.checkForToken((el)=>{
+//     if (el) {
+//       replace({
+//         pathname: '',
+//         state: { nextPathname: nextState.location.pathname }
+//       })
+//     }
+//     callback();
+//   });
+// }
 
 
-function ProfileGuard(nextState, replace, callback) {
-  Auth.checkForToken((el)=>{
-    if (el === false) {
-      replace({
-        pathname: '',
-        state: { nextPathname: nextState.location.pathname }
-      })
-    }
-    callback();
-  });
-}
+// function ProfileGuard(nextState, replace, callback) {
+//   Auth.checkForToken((el)=>{
+//     if (el === false) {
+//       replace({
+//         pathname: '',
+//         state: { nextPathname: nextState.location.pathname }
+//       })
+//     }
+//     callback();
+//   });
+// }
 
 
 render((

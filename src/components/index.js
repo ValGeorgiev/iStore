@@ -6,6 +6,7 @@ import Profile from './Profile';
 import Error from './Error';
 import Auth from './Auth';
 import ProductForm from './ProductForm';
+import BasketGrid from './BasketGrid';
 
 export { 
 	Product, 
@@ -15,5 +16,6 @@ export {
 	Error,
 	Login,
 	Register,
-	ProductForm
+	ProductForm,
+	BasketGrid
 };

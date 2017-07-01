@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-import ajax from 'superagent';
-
-import Product from './Product';
-import SERVER_URL from '../config';
+import { Link } from 'react-router';
 import defaultImage from '../../public/img/default_product.jpg';
 import '../css/basket.css';
 
