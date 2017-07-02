@@ -3,6 +3,7 @@ import ajax from 'superagent';
 import update from 'immutability-helper';
 import Address from './Address';
 import SERVER_URL from '../config';
+import '../css/profile.css';
 
 class Profile extends Component {
     constructor(props) {
@@ -119,10 +120,12 @@ class Profile extends Component {
 
 
         return (
-            <div className="container">
+            <div className="container-fluid profile-wrapper">
                 <div className="row">
-                    <h1 className>Profile page</h1>
-                    <div className="col-md-12">
+                    <div className="col-xs-12">
+                        <h1 className="title">Profile page</h1>
+                    </div>
+                    <div className="col-xs-12">
                         <p>FirstName: {this.state.firstName}</p>
                         <p>LastName: {this.state.lastName}</p>
                         <p>Email: {this.state.email}</p>
