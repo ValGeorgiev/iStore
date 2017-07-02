@@ -1,0 +1,46 @@
+.product-form-wrapper form {
+	width: 500px;
+}
+
+.product-form-wrapper h1 {
+	text-align: center;
+}
+
+.product-form-wrapper form label {
+	display: block;
+	margin: 20px;
+}
+.product-form-wrapper form input {
+	height: 40px;
+	width: 300px;
+	font-size: 18px;
+	padding: 5px;
+}
+
+input.addproduct-name {
+    margin-left: 50px;
+}		
+
+input.addproduct-description {
+    margin-left: 14px;
+}		
+
+input.addproduct-colors {
+    margin-left: 46px;
+}		
+
+.product-form-wrapper input.addproduct-quantity {
+    margin-left: 32px;
+    width: 50px;
+    text-align: center;
+}		
+input.addproduct-price {
+    margin-left: 55px;
+}		
+input.addproduct-categories {
+    margin-left: 14px;
+}		
+
+.product-form-wrapper .submit-btn {
+	margin-left: 55px;
+}

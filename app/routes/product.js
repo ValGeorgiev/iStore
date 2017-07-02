@@ -47,6 +47,7 @@ module.exports = function() {
 			name: req.body.name,
 			description: req.body.description,
 			color: req.body.color,
+			category: req.body.category,
 			quantity: req.body.quantity,
 			price: req.body.price
 		}

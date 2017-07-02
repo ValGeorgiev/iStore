@@ -73,10 +73,8 @@ class Auth {
                 ajax.post('http://localhost:3001/user/profile-data', { userId: userId })
                     .end((error, data) => {
                         if (!!error) {
-                            console.log(this.isAdmin);
                             this.isAdmin = false;
                             this.isAuthenticated = false;
-                            console.log(this.isAdmin);
                             callback({
                                 user: {},
                                 isAdmin: this.isAdmin,
