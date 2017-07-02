@@ -12,7 +12,6 @@ class Login extends Component {
     }
 
 	authenticate(event){
-        console.log(event.target.email.value);
         event.preventDefault();
         let postParams = {email:event.target.email.value,password: event.target.password.value};
 
@@ -24,12 +23,8 @@ class Login extends Component {
                 else if(!!response.body.err){
                     alert(response.body.err);
                     window.localStorage.setItem('counter',response.body.counter);
-                    console.log('counter')
-                    console.log(response.body.counter)
-
                 }
 				else if(response.body.success === true){
-                    console.log('hello')
                     this.login(response.body.token,response.body.userType,response.body.id);
 				}
 			});

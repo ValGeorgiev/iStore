@@ -34,7 +34,6 @@ class AddProduct extends Component {
                 price: product.price
             })
             .end((err, product) => {
-                console.log('before');
                 if(!err && product) {
                     console.log(product);
                 }

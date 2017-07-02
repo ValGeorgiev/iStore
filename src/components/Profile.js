@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import auth from './Auth';
 import ajax from 'superagent';
 import update from 'immutability-helper';
+import Address from './Address';
 
 class Profile extends Component {
     constructor(props) {
@@ -13,7 +13,6 @@ class Profile extends Component {
             addressTrigger: false,
             showAddressList: false,
             addresses: [],
-            showAddressInfo: [],
             newAddressObject: {
                 address: '',
                 postal: '',
@@ -25,30 +24,38 @@ class Profile extends Component {
         this.activateAddressForm = this.activateAddressForm.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.submitNewAddress = this.submitNewAddress.bind(this);
-
+        this.clearInputFields = this.clearInputFields.bind(this);
     }
 
-    componentWillMount() {
-        auth.getUserData(this.setUserData);
-    }
-
-
-    setUserData(email, firstName, lastName, type, addresses) {
-        auth.checkUserType(type);
-
-        this.setState({ 'email': email });
-        this.setState({ 'firstName': firstName });
-        this.setState({ 'lastName': lastName });
-        this.setState({ 'addresses': addresses });
-
-        if (this.state.addresses.length >= 1) {
-            this.setState({ 'showAddressList': true })
+    componentWillReceiveProps(nextProps) {
+        let userData = nextProps.userData;
+        if (Object.getOwnPropertyNames(userData).length !== 0) {
+            if (this.state.addresses.length === 0) {
+                this.setUserData(userData);
+            }
         }
+    }
+
+    setUserData(userData) {
+        let { email, firstName, lastName, addresses } = userData;
+        let showAddressList = false;
+
         let tmpArray = [];
         while (this.state.addresses.length !== tmpArray.length) {
             tmpArray.push(false)
         }
-        this.setState({ showAddressInfo: tmpArray });
+
+        if (addresses.length >= 1) {
+            showAddressList = true;
+        }
+        this.setState({
+            'email': email,
+            'firstName': firstName,
+            'lastName': lastName,
+            'addresses': addresses,
+            'showAddressList': showAddressList,
+            showAddressInfo: tmpArray
+        });
 
     }
 
@@ -56,11 +63,7 @@ class Profile extends Component {
         this.setState({ 'addressTrigger': true });
     }
 
-    showAddressInfo(index, trigger) {
-        var tmpArray = this.state.showAddressInfo.slice();
-        tmpArray[index] = trigger;
-        this.setState({ showAddressInfo: tmpArray });
-    }
+
 
     handleChange(event) {
 
@@ -102,25 +105,12 @@ class Profile extends Component {
 
 
         let addressesHTML;
-        if (this.state.showAddressList) {
-            addressesHTML = this.state.addresses.map((address, index) => {
+        if (Object.getOwnPropertyNames(this.props.userData).length !== 0) {
+            addressesHTML = this.state.addresses.map((item, index) => {
 
                 return (
                     <div key={index}>
-                        <div>{address.address}
-                            {!this.state.showAddressInfo[index] ?
-                                <button onClick={this.showAddressInfo.bind(this, index, true)} >Expand</button> :
-                                <button onClick={this.showAddressInfo.bind(this, index, false)} >Hide</button>}
-                        </div>
-
-                        {this.state.showAddressInfo[index] ?
-                            <div>
-                                <p>City: {address.city}</p>
-                                <p>Country: {address.country}</p>
-                                <p>Postal Code: {address.postal}</p>
-
-                            </div> : null
-                        }
+                        <Address index={index} address={item.address} city={item.city} country={item.country} postal={item.postal}></Address>
                     </div>
                 )
             });
