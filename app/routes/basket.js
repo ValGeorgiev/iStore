@@ -26,7 +26,6 @@ module.exports = function() {
         }).populate('product')
         .exec(function(err, basket) {
             if(!err && !!basket) {
-                console.log(`offf: ${basket}`);
                 res.send(basket);
             }
             else {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ajax from 'superagent';
 
 import SERVER_URL from '../config';
-
+import '../css/productform.css';
 
 class ProductForm extends Component {
 	constructor(props) {
@@ -75,7 +75,7 @@ class ProductForm extends Component {
 	
 	addProduct() {
 		let {name, description, colors, quantity, price, categories} = this.state;
-
+		console.log(categories);
 		ajax.post(SERVER_URL + '/product/add')
 			.send({
 				name: name,
@@ -99,32 +99,33 @@ class ProductForm extends Component {
 	    return (
 			<div className="row product-form-wrapper">
 				<div className="col-xs-12">
+					<h1>Add new product</h1>
 			  		<form onSubmit={this.handleSubmit}>
 			  			<label>
 							Name:
-							<input type="text" value={this.state.name} onChange={this.handleNameChange} />
+							<input type="text" className="addproduct-name" value={this.state.name} onChange={this.handleNameChange} />
 						</label>
 						<label>
 							Description:
-							<input type="text" value={this.state.description} onChange={this.handleDescriptionChange} />
+							<input type="text" className="addproduct-description" value={this.state.description} onChange={this.handleDescriptionChange} />
 						</label>
 						<label>
 							Colors:
-							<input type="text" value={this.state.colors} onChange={this.handleColorsChange} />
+							<input type="text" className="addproduct-colors" value={this.state.colors} onChange={this.handleColorsChange} />
 						</label>
 						<label>
 							Quantity:
-							<input type="text" value={this.state.quantity} onChange={this.handleQuantityChange} />
+							<input type="text" className="addproduct-quantity" value={this.state.quantity} onChange={this.handleQuantityChange} />
 						</label>
 						<label>
 							Price:
-							<input type="text" value={this.state.price} onChange={this.handlePriceChange} />
+							<input type="text" className="addproduct-price" value={this.state.price} onChange={this.handlePriceChange} />
 						</label>
 						<label>
 							Categories:
-							<input type="text" value={this.state.categories} onChange={this.handleCategoriesChange} />
+							<input type="text" className="addproduct-categories" value={this.state.categories} onChange={this.handleCategoriesChange} />
 						</label>
-						<input type="submit" value="Submit" />
+						<input className="submit-btn" type="submit" value="Submit" />
 			  		</form>
 				</div>
 			</div>

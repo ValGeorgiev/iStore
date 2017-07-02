@@ -63,11 +63,8 @@ module.exports = function () {
 			} else if (!!user) {
 				res.send('There is user with this email');
 			} else {
-				console.log(user)
-				console.log('print user');
 				userObj.save((err) => {
 					if (!!err) {
-						console.log(err);
 						res.send('Something went wrong');
 					} else {
 						res.send('Succesfully saved');
@@ -93,16 +90,12 @@ module.exports = function () {
 		let { userId } = req.body;
 		User.findById(userId, (err, user) => {
 			if (!!err) {
-				console.log(err);
 				res.json('Something went wrong');
 			} else {
 				Address.find({userId:userId}, (err, addresses) => {
 					if (!!err) {
-						console.log(err);
 						res.json('Something went wrong');
 					} else {
-						console.log(addresses);
-
 						res.json({ email: user.email, firstName: user.first_name, lastName: user.last_name, type: user.type, addresses: addresses })
 					}
 				})
@@ -116,10 +109,8 @@ module.exports = function () {
 
 		newAddress.save((err) => {
 			if (!!err) {
-				console.log(err);
 				res.json('Something went wrong');
 			} else {
-				console.log('address record is saved');
 				res.json({ success: 'success', message: 'address record is saved' });
 
 			}

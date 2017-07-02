@@ -7,7 +7,7 @@ import Error from './Error';
 import Auth from './Auth';
 import ProductForm from './ProductForm';
 import BasketGrid from './BasketGrid';
-
+import Address from './Address';
 export {
 	Product,
 	ProductGrid,
@@ -17,5 +17,6 @@ export {
 	Login,
 	Register,
 	ProductForm,
-	BasketGrid
+	BasketGrid,
+	Address
 };

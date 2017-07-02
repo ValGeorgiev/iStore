@@ -21,10 +21,6 @@ class ProductTile extends Component {
 					<p className="product-name">{this.props.name}</p>
 					<p className="product-price">Price: {this.props.price}</p>
 				</Link>
-				<div className="add-wrapper">
-					<input className="product-quantity" type="text" defaultValue="1"/>
-					<button data-id={this.props.id} className="add-product">Add</button>
-				</div>
 			</div>
 	  	);
 	}

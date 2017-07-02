@@ -16,9 +16,8 @@
     "immutability-helper": "^2.2.2",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.8.1",
-    "package.json": "^2.0.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react-dom": "^15.6.1",
     "react-router": "^3.0.2",
     "superagent": "^3.4.3"
   },

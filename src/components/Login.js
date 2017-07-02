@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import auth from './Auth';
 import ajax from 'superagent';
+import SERVER_URL from '../config';
 
 class Login extends Component {
     constructor(){
@@ -12,11 +13,10 @@ class Login extends Component {
     }
 
 	authenticate(event){
-        console.log(event.target.email.value);
         event.preventDefault();
         let postParams = {email:event.target.email.value,password: event.target.password.value};
 
-        ajax.post('http://localhost:3001/user/authenticate',postParams)
+        ajax.post(SERVER_URL + '/user/authenticate',postParams)
 			.end((error, response) => {
 				if(!!error) {
                     alert(error);
@@ -24,12 +24,8 @@ class Login extends Component {
                 else if(!!response.body.err){
                     alert(response.body.err);
                     window.localStorage.setItem('counter',response.body.counter);
-                    console.log('counter')
-                    console.log(response.body.counter)
-
                 }
 				else if(response.body.success === true){
-                    console.log('hello')
                     this.login(response.body.token,response.body.userType,response.body.id);
 				}
 			});
