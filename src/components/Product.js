@@ -15,11 +15,13 @@ class Product extends Component {
 		this.state = {
 			product: {},
             comments: [],
+            quantity: 1,
             comment: ''
         }
 
 		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
 		this.handleCommentChange =  this.handleCommentChange.bind(this);
+        this.handleQuantityChange = this.handleQuantityChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -71,6 +73,11 @@ class Product extends Component {
 			});
 	}
 
+    handleQuantityChange(event) {
+        this.setState({
+            quantity: event.target.value
+        });
+    }
 
 	getProduct(id) {
 		ajax.get(SERVER_URL + '/product/' + id)
@@ -146,7 +153,7 @@ class Product extends Component {
 	    					{colors}
     					</div>
 	    			</div>
-	    			<AddProduct product={product} />
+	    			<AddProduct product={product} handleQuantityChange={this.handleQuantityChange} quantity={this.state.quantity}/>
 	    		</div>
     			<div className="col-xs-12 pdp-description-wrapper">
     				<span>Product Description:</span>

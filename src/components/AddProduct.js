@@ -7,18 +7,7 @@ class AddProduct extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            quantity: 1
-        };
         this.addToBasket = this.addToBasket.bind(this);
-        this.handleQuantityChange = this.handleQuantityChange.bind(this);
-    }
-
-    handleQuantityChange(event) {
-        //const product = this.state.product;
-        this.setState({
-            quantity: event.target.value
-        });
     }
 
     addToBasket() {
@@ -30,7 +19,7 @@ class AddProduct extends Component {
                 user_id: currentUserId,
                 product: product._id,
                 color: product.color,
-                quantity: this.state.quantity,
+                quantity: this.props.quantity,
                 price: product.price
             })
             .end((err, product) => {
@@ -48,7 +37,7 @@ class AddProduct extends Component {
         return (
             <div className="pdp-add-wrapper">
                 <input className="pdp-product-quantity" type="text"
-                    value={this.state.quantity} onChange={this.handleQuantityChange} />
+                    value={this.props.quantity} onChange={this.props.handleQuantityChange} />
                 <button data-id={this.props.product._id} onClick={this.addToBasket} className="pdp-add-product">Add Product</button>
             </div>
         )

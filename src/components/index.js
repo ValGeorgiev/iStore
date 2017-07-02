@@ -8,9 +8,9 @@ import Auth from './Auth';
 import ProductForm from './ProductForm';
 import BasketGrid from './BasketGrid';
 
-export { 
-	Product, 
-	ProductGrid, 
+export {
+	Product,
+	ProductGrid,
 	Profile,
 	Auth,
 	Error,

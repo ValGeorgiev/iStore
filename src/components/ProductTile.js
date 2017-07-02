@@ -10,10 +10,6 @@ class ProductTile extends Component {
 
 		this.state = {}
 	}
-	
-	componentWillMount() {
-
-	}
 
 	render() {
 	    return(

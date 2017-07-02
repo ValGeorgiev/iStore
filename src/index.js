@@ -4,15 +4,15 @@ import { Router, Route, browserHistory } from 'react-router'
 import App from './components/App';
 
 import {
-  Product, 
-  ProductGrid, 
+  Product,
+  ProductGrid,
   Profile,
   Auth,
   Error,
   Login,
   Register,
   ProductForm,
-  BasketGrid
+  BasketGrid,
 } from './components';
 
 

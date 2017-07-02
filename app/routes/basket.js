@@ -52,17 +52,22 @@ module.exports = function() {
         })
     })
 
-    basketRouting.get('/products/:product_id', function(req, res){
-        Basket.find({
-            'product_id': req.params.product_id
-        }).populate('product_id')
-        .exec(function(err, basket) {
+    basketRouting.delete('/:product_id/:user_id', function(req, res){
+        Basket.remove({
+            '_id': req.params['product_id']
+        }, function(err) {
+            Basket.find({
+                'user_id': req.params['user_id']
+            }).populate('product')
+            .exec(function(err, basket) {
             if(!err && !!basket) {
+                console.log(`offf: ${basket}`);
                 res.send(basket);
             }
             else {
                 res.send([]);
             }
+        })
         })
     });
 

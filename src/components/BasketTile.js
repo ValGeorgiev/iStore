@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import defaultImage from '../../public/img/default_product.jpg';
 import '../css/basket.css';
 
+import RemoveProduct from './RemoveProduct'
+
 class BasketTile extends Component {
 
     constructor(props) {
@@ -10,9 +12,10 @@ class BasketTile extends Component {
         this.state = {
             product: {}
         };
+        this.handleProductRemoval = this.handleProductRemoval.bind(this);
     }
 
-    handleQuantityChange(event) {
+    handleProductRemoval(event) {
 
     }
 
@@ -49,13 +52,13 @@ class BasketTile extends Component {
                     </Link>
                     <p className="basket-product-name">{this.props.product.name}</p>
                 </div>
-                <div className="col-xs-6 basket-description-wrapper">
+                <div className="col-xs-5 basket-description-wrapper">
                     {this.props.product.description}
                 </div>
                 <div className="col-xs-3 basket-qtty-wrapper">
                     {this.props.quantity}
                 </div>
-
+                <RemoveProduct basket_id={this.props.basket_id} refresh_prs={this.props.refresh_prs} product={this.props.product._id} price={this.props.product.price} />
             </div>
         );
     }
