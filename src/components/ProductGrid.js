@@ -14,7 +14,7 @@ class ProductGrid extends Component {
 			products: []
 		}
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		this.getProducts(nextProps.routeParams.product);
 	}
@@ -42,7 +42,25 @@ class ProductGrid extends Component {
 				}
 			});
 	}
-	
+
+	addProduct() {
+		ajax.post(SERVER_URL + '/product/add')
+			.send({
+				name: "iPhone 7",
+				description: "The newest iPhone",
+				color: "black",
+				quantity: 200,
+				price: "1005$"
+			})
+			.end((err, product) => {
+				if (!err && product) {
+					console.log(product);
+				} else {
+					console.error(err);
+				}
+			});
+	}
+
   	render() {
 	  	let products;
 
@@ -53,7 +71,7 @@ class ProductGrid extends Component {
 				)
 			});
 	  	}
-  	
+
 	    return (
 			<div className="row products-wrapper">
 				<div className="col-xs-12">

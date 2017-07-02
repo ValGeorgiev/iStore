@@ -10,9 +10,9 @@ var Comment = require('../models/comment');
 module.exports = function() {
 	let productRoute = express.Router();
 
-	productRoute.get('/all/:product', function(req, res) {
+	productRoute.get('/all/:type', function(req, res) {
 		Product.find({
-			category: { $in: [req.params['product']] }
+			category: { $in: [req.params['type']] }
 		}, function(err, products) {
 			if (!!err) {
 				res.send(err);
@@ -110,14 +110,14 @@ module.exports = function() {
 			}
 		});
 	});
-	
+
 
 	productRoute.delete('/comment/:productid/:id', function(req, res) {
 		Comment.remove({
 			_id: req.params.id
 		}, function(err) {
 			Comment.find({
-				product: req.params.id
+				product: req.params.productid
 			}).populate('user')
 			.exec(function(err, comments) {
 				if (!err && !!comments) {
@@ -128,6 +128,6 @@ module.exports = function() {
 			})
 		});
 	});
-	
+
 	return productRoute;
 }

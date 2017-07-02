@@ -5,6 +5,7 @@ class Auth {
     constructor() {
         this.isAuthenticated = false;
         this.isAdmin = false;
+        this.userData = {};
     }
 
     isAuthenticated() {
@@ -30,7 +31,6 @@ class Auth {
     }
 
     checkForToken(callback) {
-        console.log('check user token')
         let token = window.localStorage.getItem('jwt-token');
 
         if (!token) {
@@ -64,22 +64,32 @@ class Auth {
             });
     }
 
-
     getUserData(callback) {
 
         this.checkForToken(() => {
             if (this.isAuthenticated) {
-                console.log('calling user data function');
                 let userId = window.localStorage.getItem('profile-id');
 
                 ajax.post('http://localhost:3001/user/profile-data', { userId: userId })
-                    .end((error, response) => {
+                    .end((error, data) => {
                         if (!!error) {
-                            alert(error);
+                            this.isAdmin = false;
+                            this.isAuthenticated = false;
+                            callback({
+                                user: {},
+                                isAdmin: this.isAdmin,
+                                isAuthenticated: this.isAuthenticated
+                            })
                         }
                         else {
-                            let { email, firstName, lastName, type ,addresses} = response.body;
-                            callback(email, firstName, lastName, type, addresses);
+                            let userData = JSON.parse(data.text);
+                            this.checkUserType(userData.type);
+                            this.userData = userData;
+                            callback({
+                                user: userData,
+                                isAdmin: this.isAdmin,
+                                isAuthenticated: this.isAuthenticated
+                            });
                         }
                     });
             }

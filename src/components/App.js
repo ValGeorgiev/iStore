@@ -2,26 +2,51 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 import auth from './Auth';
 import '../css/app.css';
-
 class App extends Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			isAuthenticated: false
+			isAuthenticated: false,
+			user: {},
+			isAdmin: false
 		};
+		// this.getProfileData= this.getProfileData.bind(this);
 	}
 
-	componentDidMount() {
-		auth.checkForToken((flag) => {
+	componentWillMount() {
+		auth.getUserData((data) => {
 			this.setState({
-				'isAuthenticated': flag
+				'isAuthenticated': data.isAuthenticated,
+				'user': data.user,
+				'isAdmin': data.isAdmin
 			})
 		});
 	}
 
-	render() {
+	renderAdminLink() {
 
+		if (this.state.isAdmin) {
+
+			return (
+				<div className="col-xs-12">
+					<Link to="/admin/product">Add Product</Link>
+				</div>
+			);
+		}
+		return '';
+	}
+
+
+
+	render() {
+		let adminLink = this.renderAdminLink();
+		let  dat= this;
+		var children = React.Children.map(this.props.children, function (child) {
+			return React.cloneElement(child, {
+				userData: dat.state.user 
+			});
+		});
 		return (
 			<div className="wrapper container-fluid">
 				<div className="row nav">
@@ -44,12 +69,17 @@ class App extends Component {
 						<Link to="/products/laptops">Laptops</Link>
 					</div>
 
+					<div className="col-xs-1">
+						<Link to="/basket">Basket</Link>
+					</div>
+
 				</div>
-				{this.props.children}
+				{adminLink}
+				{/*{this.getProfileData()}*/}
+				{children}
 			</div>
 		);
 	}
 }
-
 
 export default App;
