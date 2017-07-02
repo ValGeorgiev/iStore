@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import auth from './Auth';
 import ajax from 'superagent';
+import SERVER_URL from '../config';
 
 class Login extends Component {
     constructor(){
@@ -15,7 +16,7 @@ class Login extends Component {
         event.preventDefault();
         let postParams = {email:event.target.email.value,password: event.target.password.value};
 
-        ajax.post('http://localhost:3001/user/authenticate',postParams)
+        ajax.post(SERVER_URL + '/user/authenticate',postParams)
 			.end((error, response) => {
 				if(!!error) {
                     alert(error);

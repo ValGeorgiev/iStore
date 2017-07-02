@@ -70,7 +70,7 @@ class Auth {
             if (this.isAuthenticated) {
                 let userId = window.localStorage.getItem('profile-id');
 
-                ajax.post('http://localhost:3001/user/profile-data', { userId: userId })
+                ajax.post(SERVER_URL + '/user/profile-data', { userId: userId })
                     .end((error, data) => {
                         if (!!error) {
                             this.isAdmin = false;
