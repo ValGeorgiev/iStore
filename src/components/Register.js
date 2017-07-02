@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ajax from 'superagent';
+import SERVER_URL from '../config';
+
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,7 @@ class Register extends Component {
                 password: this.state.password
             };
 
-            ajax.post('http://localhost:3001/user/register')
+            ajax.post(SERVER_URL + '/user/register')
                 .send(postParams)
                 .end((error, response) => {
                     if (!!error) {

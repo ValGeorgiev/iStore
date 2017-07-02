@@ -51,7 +51,7 @@ render((
       <Route path="/register" component={Register} onEnter={checkAuth} />
       <Route path="/login" component={Login} onEnter={checkAuth} />
       <Route path="/logout" onEnter={Auth.logout} />
-      <Route path="/admin/product" component={ProductForm} onEnter={checkAuth} />
+      <Route path="/admin/product" component={ProductForm} onEnter={ProfileGuard} />
       <Route path="/basket" component={BasketGrid} />
       <Route path="/error" component={Error} />
     </Route>

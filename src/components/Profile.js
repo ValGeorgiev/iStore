@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ajax from 'superagent';
 import update from 'immutability-helper';
 import Address from './Address';
+import SERVER_URL from '../config';
 
 class Profile extends Component {
     constructor(props) {
@@ -86,7 +87,7 @@ class Profile extends Component {
         let postParams = this.state.newAddressObject;
         postParams._id = window.localStorage.getItem('profile-id');
 
-        ajax.post('http://localhost:3001/user/add-address')
+        ajax.post(SERVER_URL + '/user/add-address')
             .send(postParams)
             .end((error, res) => {
                 if (!!error) {
