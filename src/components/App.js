@@ -29,7 +29,7 @@ class App extends Component {
 		if (this.state.isAdmin) {
 
 			return (
-				<div className="col-xs-12">
+				<div className="col-xs-3">
 					<Link to="/admin/product">Add Product</Link>
 				</div>
 			);
@@ -50,8 +50,11 @@ class App extends Component {
 		return (
 			<div className="wrapper container-fluid">
 				<div className="row nav">
-					<div className="col-xs-10">
+					<div className="col-xs-9">
 						<h1 id="main-title">iStore</h1>
+					</div>
+					<div className="col-xs-1">
+						{this.state.isAuthenticated ? <Link to="/basket">Basket</Link> : ''}
 					</div>
 					<div className="col-xs-1">
 						{!this.state.isAuthenticated ? <Link to="/register">Register</Link> : <Link to="/profile">Profile</Link>}
@@ -69,13 +72,8 @@ class App extends Component {
 						<Link to="/products/laptops">Laptops</Link>
 					</div>
 
-					<div className="col-xs-1">
-						<Link to="/basket">Basket</Link>
-					</div>
-
+					{adminLink}
 				</div>
-				{adminLink}
-				{/*{this.getProfileData()}*/}
 				{children}
 			</div>
 		);
