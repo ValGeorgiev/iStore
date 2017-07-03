@@ -9,9 +9,12 @@ Online store
 
 - Developers:
   * Valentin Georgiev
-  * Ivan Atanasov
   * Ivelin Todorov
   * George Dimov
+
+- [Documentation](https://docs.google.com/document/d/1rcBJXrBC73CsblqBxUpDG1HBWqOCWHomXbFrSHcOklI/edit)
+
+- Presentation
 
 - Functionalities:
   * 1. Authentication
