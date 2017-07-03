@@ -9,7 +9,7 @@
 }
 
 body,html {
-  background: #e5e5e5;
+  background: #525BFA;
   overflow-x: hidden;
   height: 100%;
 }
@@ -20,7 +20,7 @@ body {
   font-family: sans-serif;
 }
 
-input, textarea {
+input, textarea, button {
   outline: none;
 }
 
@@ -29,6 +29,11 @@ input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.no-products {
+  width: 100%;
+  text-align: center;
 }
 
 a {
@@ -55,10 +60,14 @@ a:active {
 
 .nav {
   margin: 20px 0;
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .nav .col-xs-3 {
   padding: 0;
+  text-align: center;
 }
 
 .nav-tab {
@@ -88,4 +97,8 @@ a:active {
 .col-md-12.register {
   text-align: center;
 
+}
+
+.image-container img {
+  width: 100%;
 }

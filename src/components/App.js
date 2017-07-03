@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import auth from './Auth';
-import ajax from 'superagent';
+import background from '../../public/img/background.jpg'
 import '../css/app.css';
 class App extends Component {
 
@@ -25,7 +25,15 @@ class App extends Component {
 	}
 
 	renderImage() {
+		if (window.location.href === (window.location.origin + '/')) {
 
+			return (
+				<div className="image-container">
+					<img src={background} alt="background"/>
+				</div>
+			)
+		}
+		return null;
 	}
 
 	renderAdminLink() {

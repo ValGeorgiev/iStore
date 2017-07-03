@@ -64,12 +64,14 @@ class ProductGrid extends Component {
   	render() {
 	  	let products;
 
-	  	if (this.state.products) {
+	  	if (this.state.products && this.state.products.length > 0) {
 			products = this.state.products.map(product => {
 	    		return (
 					<ProductTile key={product._id} name={product.name} price={product.price} id={product._id}/>
 				)
 			});
+	  	} else {
+	  		products = <div className="no-products">Sorry, this category is empty!</div>
 	  	}
 
 	    return (

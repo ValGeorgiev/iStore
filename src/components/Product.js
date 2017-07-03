@@ -5,7 +5,6 @@ import SERVER_URL from '../config';
 import defaultImage from '../../public/img/default_product.jpg';
 import '../css/product.css';
 
-import Auth from './Auth';
 import AddProduct from './AddProduct';
 
 class Product extends Component {
@@ -27,13 +26,11 @@ class Product extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.getProduct(nextProps.routeParams.id);
-		console.log(Auth.isAdmin);
     }
 
 	componentWillMount() {
 		if (!!this.state.product ) {
 			this.getProduct(this.props.routeParams.id);
-			console.log(Auth.isAdmin);
         }
 	}
 
