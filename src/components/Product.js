@@ -14,24 +14,24 @@ class Product extends Component {
 
 		this.state = {
 			product: {},
-            comments: [],
-            quantity: 1,
-            comment: ''
-        }
+			comments: [],
+			quantity: 1,
+			comment: ''
+		}
 
-		this.handleCommentSubmit =  this.handleCommentSubmit.bind(this);
-		this.handleCommentChange =  this.handleCommentChange.bind(this);
-        this.handleQuantityChange = this.handleQuantityChange.bind(this);
+		this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+		this.handleCommentChange = this.handleCommentChange.bind(this);
+		this.handleQuantityChange = this.handleQuantityChange.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.getProduct(nextProps.routeParams.id);
-    }
+	}
 
 	componentWillMount() {
-		if (!!this.state.product ) {
+		if (!!this.state.product) {
 			this.getProduct(this.props.routeParams.id);
-        }
+		}
 	}
 
 	handleCommentChange(event) {
@@ -73,16 +73,16 @@ class Product extends Component {
 			});
 	}
 
-    handleQuantityChange(event) {
-        this.setState({
-            quantity: event.target.value
-        });
-    }
+	handleQuantityChange(event) {
+		this.setState({
+			quantity: event.target.value
+		});
+	}
 
 	getProduct(id) {
 		ajax.get(SERVER_URL + '/product/' + id)
 			.end((err, res) => {
-				if(!err && !!res) {
+				if (!err && !!res) {
 					let product = JSON.parse(res.text);
 					this.setState({
 						product: product
@@ -115,63 +115,63 @@ class Product extends Component {
 
 	render() {
 		let product = this.state.product;
-	 	let colors;
+		let colors;
 
-	  	if (product.color) {
+		if (product.color) {
 			colors = product.color.map(color => {
-	    		return (
+				return (
 					<span key={color}> {color} </span>
 				)
 			});
-	  	}
+		}
 
-	  	let comments = this.state.comments.map(comment => {
-	  		return (
-	  			<div key={comment._id} className="comment-wrapper">
-	  				<span>{comment.user.first_name} {comment.user.last_name}:</span>
-	  				<p>{comment.content}</p>
-	  				<button onClick={this.handleDeleteComment.bind(this, comment._id)}>X</button>
-	  			</div>
-  			)
-	  	}).reverse();
+		let comments = this.state.comments.map(comment => {
+			return (
+				<div key={comment._id} className="comment-wrapper">
+					<span>{comment.user.first_name} {comment.user.last_name}:</span>
+					<p>{comment.content}</p>
+					{this.props.userData.type === 'admin' ?  <button onClick={this.handleDeleteComment.bind(this, comment._id)}>X</button> : null}
+				</div>
+			)
+		}).reverse();
 
 
-	    return(
+		return (
 
-	    	<div className="row product-container">
-	    		<div className="col-xs-12">
-	    			<h2 className="pdp-product-title">{product.name}</h2>
-	    		</div>
-	    		<div className="col-xs-5 pdp-image-wrapper">
-	    			<img src={defaultImage} alt="default"/>
-	    		</div>
-	    		<div className="col-xs-7 pdp-info-wrapper">
-	    			<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>
-	    			<div className="pdp-colors-wrapper">
-	    				<span>Colors: </span>
-	    				<div>
-	    					{colors}
-    					</div>
-	    			</div>
-	    			<AddProduct product={product} handleQuantityChange={this.handleQuantityChange} quantity={this.state.quantity}/>
-	    		</div>
-    			<div className="col-xs-12 pdp-description-wrapper">
-    				<span>Product Description:</span>
-    				<p>{product.description}</p>
-    			</div>
-    			<div className="col-xs-12 add-pdp-comment">
-    				<span>Comment: </span>
-    				<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
-    				<div>
-    					<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
-    				</div>
-    			</div>
-    			<div className="col-xs-12 pdp-comments">
-    				{comments}
-    			</div>
+			<div className="row product-container">
+				<div className="col-xs-12">
+					<h2 className="pdp-product-title">{product.name}</h2>
+				</div>
+				<div className="col-xs-5 pdp-image-wrapper">
+					<img src={defaultImage} alt="default" />
+				</div>
+				<div className="col-xs-7 pdp-info-wrapper">
+					<p className="pdp-price-wrapper">Price: <span>{product.price}</span></p>
+					<div className="pdp-colors-wrapper">
+						<span>Colors: </span>
+						<div>
+							{colors}
+						</div>
+					</div>
+					<AddProduct product={product} handleQuantityChange={this.handleQuantityChange} quantity={this.state.quantity} />
+				</div>
+				<div className="col-xs-12 pdp-description-wrapper">
+					<span>Product Description:</span>
+					<p>{product.description}</p>
+				</div>
+				<div className="col-xs-12 add-pdp-comment">
+					<span>Comment: </span>
+					<textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
+					<div>
+						<button className="add-comment" onClick={this.handleCommentSubmit}>Add Comment</button>
+					</div>
+				</div>
+				<div className="col-xs-12 pdp-comments">
+					{comments}
+				</div>
 
 			</div>
-	  	);
+		);
 	}
 }
 
