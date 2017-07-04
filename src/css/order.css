@@ -9,16 +9,10 @@
 }
 
 .address-wrapper {
-    -webkit-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
     text-align: center;
     overflow: hidden;
     padding: 0;
-    margin: 10px;
     border-radius: 5px;
-    width: 100%;
-    background: #d3d0f5;
 }
 
 .address-title {
@@ -31,7 +25,7 @@
     margin-left: 15px;
 }
 
-.line{
+.line {
     margin-left: 10px;
     width: 200px;
     border-bottom: 1px solid black;
@@ -43,12 +37,26 @@
     margin: 10px;
     border-radius: 5px;
     width: 100%;
+    height: 40px;
+    line-height: 40px;
     background: #d3d0f5;
+}
+
+.order-address-wrapper {
+    position: relative;
+}
+.order-address-wrapper input {
+    position: absolute;
+    top: 12px;
+    cursor: pointer;
+    left: -13px;
+    width: 20px;
+    height: 20px;
 }
 
 .order-address {
     display: flex;
-    margin: 10px;
+    margin: 10px 10px 10px 20px;
 }
 
 .new-address-btn {
@@ -59,6 +67,7 @@
     border: 1px solid silver;
     margin-top: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .new-address {
@@ -80,9 +89,23 @@
     text-align: center;
     overflow: hidden;
     padding: 0;
+    height: 40px;
+    line-height: 40px;
     margin: 10px;
     border-radius: 5px;
     width: 100%;
     background: #d3d0f5;
     display: flex;
+}
+
+.submit-order button {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.address-wrapper .address-details {
+    margin: 20px 0;
+}
+.address-wrapper .address-details .form-group {
+    margin: 10px 0;
 }

@@ -13,7 +13,6 @@ var key = require('../../config.js').secret;
 module.exports = function () {
 	let userRoute = express.Router();
 
-	// @TODO: to be deleted, this is just an example
 	userRoute.post('/authenticate', function (req, res) {
 		let email = req.body.email;
 		let password = req.body.password;
@@ -123,7 +122,6 @@ module.exports = function () {
             userId: user_id
         }).populate('userId')
        .exec(function(err, addresses) {
-            console.log(addresses);
             if(!err && addresses) {
                 res.send(addresses);
             }

@@ -14,16 +14,14 @@
 }
 
 .basket-product-wrapper {
-    -webkit-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
-    -moz-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
-    box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+    
     text-align: center;
     overflow: hidden;
     padding: 0;
-    margin: 10px;
     border-radius: 5px;
     display: flex;
-    width: 100%;
+    border-bottom: 1px solid silver;
+    margin-bottom: 10px;
 }
 
 .basket-product-wrapper .basket-product-name {
@@ -64,4 +62,10 @@
     font-size: 14px;
     border-radius: 20px;
     border: 1px solid silver;
+    cursor: pointer;
+}
+
+.basket-removal-wrapper button {
+    padding: 5px;
+    margin-left: -8px;
 }

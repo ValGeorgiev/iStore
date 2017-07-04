@@ -4,7 +4,6 @@ import ajax from 'superagent';
 import SERVER_URL from '../config';
 import '../css/order.css';
 
-import Address from './Address';
 import { OrderAddress, NewAddress } from './OrderAddress';
 
 class Order extends Component {
@@ -87,9 +86,9 @@ class Order extends Component {
     }
 
     compareDate(str_date){
-        var dt = parseInt(str_date.substring(0,2));
-        var mon = parseInt(str_date.substring(3,5));
-        var yr = parseInt(str_date.substring(6,10));
+        var dt = parseInt(str_date.substring(0,2), 10);
+        var mon = parseInt(str_date.substring(3,5), 10);
+        var yr = parseInt(str_date.substring(6,10), 10);
         var date = new Date(yr, mon-1, dt);
         return date;
     }
@@ -169,8 +168,8 @@ class Order extends Component {
     render() {
         const addresses = this.state.user_addresses.map( (address, index) => {
             return (
-                <div key={index}>
-                    <input className="col-xs-2 order-address"
+                <div className="order-address-wrapper" key={index}>
+                    <input className="order-address"
                         name="address_select"
                         type="radio"
                         value={address._id}
@@ -232,7 +231,7 @@ class Order extends Component {
                                     className="form-control" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="code">4-digit Code: </label>
+                                <label htmlFor="code">3-digit Code: </label>
                                 <input type="number"
                                     name="card_code"
                                     value={this.state.card_details.card_code}
@@ -244,7 +243,7 @@ class Order extends Component {
                     </div>
                 </div>
                 <div className="row submit-order">
-                    <p className="col-xs-6 total-price">Total Price: {this.state.total_price}</p>
+                    <p className="col-xs-6 total-price">Total Price: {this.state.total_price}$</p>
                     <button className="col-xs-6 order-button" onClick={this.sendOrder}>Submit Order</button>
                 </div>
             </div>
