@@ -51,14 +51,12 @@ class Auth {
             .send(postParams)
             .end((error, response) => {
                 if (!!error) {
-                    alert(error);
                     return;
                 }
                 if (response.body.success) {
                     this.isAuthenticated = true;
                 } else {
                     this.isAuthenticated = false;
-                    alert(response.body.err);
                 }
                 callback(this.isAuthenticated);
             });
@@ -70,7 +68,7 @@ class Auth {
             if (this.isAuthenticated) {
                 let userId = window.localStorage.getItem('profile-id');
 
-                ajax.post(SERVER_URL + '/user/profile-data', { userId: userId })
+                ajax.post(`${SERVER_URL}/user/profile-data`, { userId: userId })
                     .end((error, data) => {
                         if (!!error) {
                             this.isAdmin = false;
