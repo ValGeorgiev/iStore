@@ -233,7 +233,7 @@ class Order extends Component {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="code">4-digit Code: </label>
-                                <input type="code"
+                                <input type="number"
                                     name="card_code"
                                     value={this.state.card_details.card_code}
                                     onChange={this.handleChange}
