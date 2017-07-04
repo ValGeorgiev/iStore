@@ -4,7 +4,6 @@ import ajax from 'superagent';
 import SERVER_URL from '../config';
 import '../css/order.css';
 
-import Address from './Address';
 import { OrderAddress, NewAddress } from './OrderAddress';
 
 class Order extends Component {
@@ -87,9 +86,9 @@ class Order extends Component {
     }
 
     compareDate(str_date){
-        var dt = parseInt(str_date.substring(0,2));
-        var mon = parseInt(str_date.substring(3,5));
-        var yr = parseInt(str_date.substring(6,10));
+        var dt = parseInt(str_date.substring(0,2), 10);
+        var mon = parseInt(str_date.substring(3,5), 10);
+        var yr = parseInt(str_date.substring(6,10), 10);
         var date = new Date(yr, mon-1, dt);
         return date;
     }

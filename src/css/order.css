@@ -9,16 +9,10 @@
 }
 
 .address-wrapper {
-    -webkit-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
     text-align: center;
     overflow: hidden;
     padding: 0;
-    margin: 10px;
     border-radius: 5px;
-    width: 100%;
-    background: #d3d0f5;
 }
 
 .address-title {
@@ -80,6 +74,8 @@
     text-align: center;
     overflow: hidden;
     padding: 0;
+    height: 40px;
+    text-align: 40px;
     margin: 10px;
     border-radius: 5px;
     width: 100%;

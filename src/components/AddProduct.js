@@ -27,7 +27,7 @@ class AddProduct extends Component {
         let product = this.props.product;
         let currentUserId = window.localStorage.getItem('profile-id');
         let total_price = parseFloat(product.price.slice(0, product.price.length - 1));
-        total_price = total_price * parseFloat(this.props.quantity);
+        total_price *= parseFloat(this.props.quantity);
         total_price = total_price.toString();
 
         ajax.post(SERVER_URL + '/basket/')

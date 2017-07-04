@@ -11,7 +11,7 @@ class RemoveProduct extends Component {
 
     removeFromBasket() {
         let currentUserID = window.localStorage.getItem('profile-id');
-        console.log(this.props.basket_id);
+
         ajax.delete(`${SERVER_URL}/basket/${this.props.basket_id}/${currentUserID}`)
             .end((err, res) => {
                 if(!err && !!res) {
