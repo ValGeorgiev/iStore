@@ -8,6 +8,7 @@ import Auth from './Auth';
 import ProductForm from './ProductForm';
 import BasketGrid from './BasketGrid';
 import Address from './Address';
+import Order from './Order';
 export {
 	Product,
 	ProductGrid,
@@ -18,5 +19,6 @@ export {
 	Register,
 	ProductForm,
 	BasketGrid,
-	Address
+	Address,
+    Order
 };

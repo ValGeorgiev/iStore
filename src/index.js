@@ -13,6 +13,7 @@ import {
   Register,
   ProductForm,
   BasketGrid,
+  Order
 } from './components';
 
 
@@ -54,6 +55,7 @@ render((
       <Route path="/admin/product" component={ProductForm} onEnter={ProfileGuard} />
       <Route path="/basket" component={BasketGrid} />
       <Route path="/error" component={Error} />
+      <Route path="/order" component={Order} />
     </Route>
   </Router>
 

@@ -117,6 +117,21 @@ module.exports = function () {
 		})
 	});
 
+    userRoute.get('/addresses/:user_id', (req, res) => {
+        let user_id = req.params['user_id'];
+        Address.find({
+            userId: user_id
+        }).populate('userId')
+       .exec(function(err, addresses) {
+            console.log(addresses);
+            if(!err && addresses) {
+                res.send(addresses);
+            }
+            else {
+                res.send([]);
+            }
+       })
+    })
 
 	return userRoute;
 };

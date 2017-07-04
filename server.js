@@ -41,6 +41,9 @@ app.use('/user', authenticate);
 var basket = require('./app/routes/basket')();
 app.use('/basket', basket);
 
+var order = require('./app/routes/order')();
+app.use('/order', order);
+
 app.listen(config.port, function(err) {
 	if ( err ) {
 		console.error(error);

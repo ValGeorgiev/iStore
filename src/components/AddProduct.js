@@ -13,6 +13,9 @@ class AddProduct extends Component {
     addToBasket() {
         let product = this.props.product;
         let currentUserId = window.localStorage.getItem('profile-id');
+        let total_price = parseFloat(product.price.slice(0, product.price.length - 1));
+        total_price = total_price * parseFloat(this.props.quantity);
+        total_price = total_price.toString();
         //currentUserId = JSON.parse(currentUserId);;
         ajax.post(SERVER_URL + '/basket/')
             .send({
@@ -20,7 +23,7 @@ class AddProduct extends Component {
                 product: product._id,
                 color: product.color,
                 quantity: this.props.quantity,
-                price: product.price
+                price: total_price
             })
             .end((err, product) => {
                 if(!err && product) {

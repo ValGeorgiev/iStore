@@ -1,0 +1,88 @@
+.order-wrapper {
+    background: white;
+    padding-bottom: 20px;
+}
+
+.order-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.address-wrapper {
+    -webkit-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background: #d3d0f5;
+}
+
+.address-title {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.address-details {
+    margin-left: 15px;
+}
+
+.line{
+    margin-left: 10px;
+    width: 200px;
+    border-bottom: 1px solid black;
+}
+
+.address {
+    overflow: hidden;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background: #d3d0f5;
+}
+
+.order-address {
+    display: flex;
+    margin: 10px;
+}
+
+.new-address-btn {
+    width: 120px;
+    height: 35px;
+    font-size: 14px;
+    border-radius: 14px;
+    border: 1px solid silver;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.new-address {
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background: #d3d0f5;
+    position: block;
+    z-index: 100;
+}
+
+.submit-order {
+    -webkit-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 14px 10px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 10px;
+    border-radius: 5px;
+    width: 100%;
+    background: #d3d0f5;
+    display: flex;
+}
