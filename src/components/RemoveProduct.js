@@ -16,7 +16,6 @@ class RemoveProduct extends Component {
             .end((err, res) => {
                 if(!err && !!res) {
                     let updated_basket_products = JSON.parse(res.text);
-                    console.log(updated_basket_products);
                     this.props.refresh_prs(updated_basket_products);
                 }
                 else {

@@ -112,7 +112,7 @@ class NewAddress extends Component {
 function OrderAddress(props) {
 
     return (
-        <div className="col-xs-10 order-address">
+        <div className=" order-address">
             <div className="address">{props.address.address}</div>
             <div className="address">{props.address.city}</div>
             <div className="address">{props.address.country}</div>

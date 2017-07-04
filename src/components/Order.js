@@ -168,8 +168,8 @@ class Order extends Component {
     render() {
         const addresses = this.state.user_addresses.map( (address, index) => {
             return (
-                <div key={index}>
-                    <input className="col-xs-2 order-address"
+                <div className="order-address-wrapper" key={index}>
+                    <input className="order-address"
                         name="address_select"
                         type="radio"
                         value={address._id}
@@ -231,7 +231,7 @@ class Order extends Component {
                                     className="form-control" />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="code">4-digit Code: </label>
+                                <label htmlFor="code">3-digit Code: </label>
                                 <input type="code"
                                     name="card_code"
                                     value={this.state.card_details.card_code}
@@ -243,7 +243,7 @@ class Order extends Component {
                     </div>
                 </div>
                 <div className="row submit-order">
-                    <p className="col-xs-6 total-price">Total Price: {this.state.total_price}</p>
+                    <p className="col-xs-6 total-price">Total Price: {this.state.total_price}$</p>
                     <button className="col-xs-6 order-button" onClick={this.sendOrder}>Submit Order</button>
                 </div>
             </div>
