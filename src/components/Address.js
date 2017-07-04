@@ -18,14 +18,15 @@ class Address extends Component {
     render() {
         return (
             <div>
-                <div>{this.props.address}
+                <div className="address-name">
+                    {this.props.address}
                     {!this.state.showAddressInfo[this.props.index] ?
-                        <button onClick={this.showAddressInfo.bind(this, this.props.index, true)} >Expand</button> :
+                        <button onClick={this.showAddressInfo.bind(this, this.props.index, true)} >Show</button> :
                         <button onClick={this.showAddressInfo.bind(this, this.props.index, false)} >Hide</button>}
                 </div>
 
                 {this.state.showAddressInfo[this.props.index] ?
-                    <div>
+                    <div className="address-wrapper">
                         <p>City: {this.props.city}</p>
                         <p>Country: {this.props.country}</p>
                         <p>Postal Code: {this.props.postal}</p>

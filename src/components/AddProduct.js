@@ -7,7 +7,20 @@ class AddProduct extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            message: '',
+            quantity: this.props.quantity
+        };
         this.addToBasket = this.addToBasket.bind(this);
+    }
+
+    deleteMessage() {
+        let that = this;
+        setTimeout(() => {
+            that.setState({
+                message: ''
+            });
+        }, 3000)
     }
 
     addToBasket() {
@@ -16,7 +29,7 @@ class AddProduct extends Component {
         let total_price = parseFloat(product.price.slice(0, product.price.length - 1));
         total_price = total_price * parseFloat(this.props.quantity);
         total_price = total_price.toString();
-        //currentUserId = JSON.parse(currentUserId);;
+
         ajax.post(SERVER_URL + '/basket/')
             .send({
                 user_id: currentUserId,
@@ -27,10 +40,15 @@ class AddProduct extends Component {
             })
             .end((err, product) => {
                 if(!err && product) {
-                    console.log(product);
+                    this.setState({
+                        message: "This product is added successfully!"
+                    })
+                    this.deleteMessage();
                 }
                 else {
-                    console.log(err);
+                    this.setState({
+                        message: "There is something wrong! Please, try again after page reload"
+                    })
                 }
             });
     }
@@ -41,6 +59,7 @@ class AddProduct extends Component {
                 <input className="pdp-product-quantity" type="text"
                     value={this.props.quantity} onChange={this.props.handleQuantityChange} />
                 <button data-id={this.props.product._id} onClick={this.addToBasket} className="pdp-add-product">Add Product</button>
+                <p className="product-message">{this.state.message}</p>
             </div>
         )
     }

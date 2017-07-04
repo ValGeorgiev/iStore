@@ -1,3 +1,9 @@
+.product-container {
+	background: #fafafa;
+	padding: 15px;
+	border-radius: 5px;
+}
+
 .pdp-product-title {
 	font-size: 28px;
 	text-align: center;
@@ -65,6 +71,7 @@
 	border-radius: 5px;
 	border: 1px solid silver;
 	margin-left: 20px;
+	cursor: pointer;
 }
 
 .pdp-description-wrapper {
@@ -111,10 +118,12 @@
 	border-radius: 5px;
 	border: 1px solid silver;
 	font-size: 21px;
+	cursor: pointer;
 }
 
 .comment-wrapper {
 	margin: 15px 0 20px 10px;
+	position: relative;
 }
 
 .comment-wrapper span {
@@ -126,4 +135,19 @@
 	margin-top: 10px;
 	padding-left: 10px;
 	font-size: 16px;
+}
+
+.comment-wrapper button {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 0;
+	cursor: pointer;
+}
+
+.product-message {
+	margin: 10px 0;
 }

@@ -1,0 +1,62 @@
+.profile-wrapper {
+	padding: 20px;
+	background: #fafafa;
+	border-radius: 10px;
+} 
+
+.profile-wrapper .title {
+	text-align: center;
+}
+
+.profile-wrapper .profile-first-name, .profile-last-name {
+	margin: 10px 0;
+}
+
+.profile-wrapper .profile-first-name span {
+	font-size: 19px;
+	margin-left: 10px;
+}
+.profile-wrapper .profile-last-name span {
+	font-size: 19px;
+	margin-left: 10px;
+}
+.profile-wrapper .profile-email {
+	margin: 10px 0;
+}
+.profile-wrapper .profile-email span {
+	margin-left: 10px;
+	font-size: 19px;
+}
+.profile-wrapper .profile-address-label {
+	margin: 10px;
+	display: block;
+}
+
+.profile-wrapper .add-address-btn {
+	width: 240px;
+	height: 40px;
+	border-radius: 5px;
+	border: 0;
+	-webkit-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	-moz-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
+	background: 0;
+	font-size: 19px;
+	margin: 25px 0;
+}
+
+.profile-wrapper .address-name {
+	margin-left: 40px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+.profile-wrapper .address-name button{
+	height: 22px;
+	width: 40px;
+	margin-left: 20px;
+}	
+
+.profile-wrapper .address-wrapper {
+	margin-left: 60px;
+	margin-bottom: 35px;
+}	

@@ -3,6 +3,7 @@ import ajax from 'superagent';
 import update from 'immutability-helper';
 import Address from './Address';
 import SERVER_URL from '../config';
+import '../css/profile.css';
 
 class Profile extends Component {
     constructor(props) {
@@ -119,16 +120,18 @@ class Profile extends Component {
 
 
         return (
-            <div className="container">
+            <div className="container-fluid profile-wrapper">
                 <div className="row">
-                    <h1 className>Profile page</h1>
-                    <div className="col-md-12">
-                        <p>FirstName: {this.state.firstName}</p>
-                        <p>LastName: {this.state.lastName}</p>
-                        <p>Email: {this.state.email}</p>
-                        <p>My Address: </p>
+                    <div className="col-xs-12">
+                        <h1 className="title">Profile page</h1>
+                    </div>
+                    <div className="col-xs-12">
+                        <div className="profile-first-name">First name: <span>{this.state.firstName}</span></div>
+                        <div className="profile-last-name">Last name: <span>{this.state.lastName}</span></div>
+                        <div className="profile-email">Email: <span>{this.state.email}</span></div>
+                        <span className="profile-address-label">My Address: </span>
                         {this.state.showAddressList ? <div>{addressesHTML}</div> : null}
-                        <button onClick={this.activateAddressForm} >Add new Address</button>
+                        <button className="add-address-btn" onClick={this.activateAddressForm} >Add new address</button>
 
                         {this.state.addressTrigger ?
                             <form className="form" onSubmit={this.submitNewAddress}>

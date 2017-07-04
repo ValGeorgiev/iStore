@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router'
 import auth from './Auth';
+import background from '../../public/img/background.jpg'
 import '../css/app.css';
 class App extends Component {
 
@@ -11,7 +12,6 @@ class App extends Component {
 			user: {},
 			isAdmin: false
 		};
-		// this.getProfileData= this.getProfileData.bind(this);
 	}
 
 	componentWillMount() {
@@ -22,6 +22,18 @@ class App extends Component {
 				'isAdmin': data.isAdmin
 			})
 		});
+	}
+
+	renderImage() {
+		if (window.location.href === (window.location.origin + '/')) {
+
+			return (
+				<div className="image-container">
+					<img src={background} alt="background"/>
+				</div>
+			)
+		}
+		return null;
 	}
 
 	renderAdminLink() {
@@ -37,8 +49,6 @@ class App extends Component {
 		return '';
 	}
 
-
-
 	render() {
 		let adminLink = this.renderAdminLink();
 		let  dat= this;
@@ -51,7 +61,11 @@ class App extends Component {
 			<div className="wrapper container-fluid">
 				<div className="row nav">
 					<div className="col-xs-9">
-						<h1 id="main-title">iStore</h1>
+						<h1 id="main-title">
+							<Link to="/">
+								iStore
+							</Link>
+						</h1>
 					</div>
 					<div className="col-xs-1">
 						{this.state.isAuthenticated ? <Link to="/basket">Basket</Link> : ''}
@@ -75,6 +89,7 @@ class App extends Component {
 					{adminLink}
 				</div>
 				{children}
+				{this.renderImage()}
 			</div>
 		);
 	}
