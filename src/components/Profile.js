@@ -37,6 +37,14 @@ class Profile extends Component {
             }
         }
     }
+    componentWillMount() {
+        let userData = this.props.userData;
+        if (Object.getOwnPropertyNames(userData).length !== 0) {
+            if (this.state.addresses.length === 0) {
+                this.setUserData(userData);
+            }
+        }
+    }
 
     setUserData(userData) {
         let { email, firstName, lastName, addresses } = userData;
@@ -134,7 +142,7 @@ class Profile extends Component {
                         <button className="add-address-btn" onClick={this.activateAddressForm} >Add new address</button>
 
                         {this.state.addressTrigger ?
-                            <form className="form" onSubmit={this.submitNewAddress}>
+                            <form className="form address-form" onSubmit={this.submitNewAddress}>
                                 <div className="form-group">
                                     <label htmlFor="address">Address: </label>
                                     <input type="text"
@@ -175,7 +183,7 @@ class Profile extends Component {
                                         onChange={this.handleChange}
                                         required />
                                 </div>
-                                <input type="submit" value="Submit" className="btn btn-default" />
+                                <input type="submit" value="Add address" className="btn btn-default" />
 
                             </form>
                             : null}

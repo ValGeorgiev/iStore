@@ -72,69 +72,67 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-md-12 register">
-                        <h2>Register:</h2>
-                        <form className="form" onSubmit={this.register}>
-                            <div className="form-group">
-                                <label htmlFor="first-name">First name: </label>
-                                <input type="text"
-                                    id="first-name"
-                                    className="form-control"
-                                    name="firstName"
-                                    value={this.state.firstName}
-                                    onChange={this.handleChange}
-                                    required />
-                            </div>
-                            <div className="form-group">
+            <div className="row">
+                <div className="col-xs-12 register">
+                    <h2>Register:</h2>
+                    <form className="form" onSubmit={this.register}>
+                        <div className="form-group">
+                            <label htmlFor="first-name">First name: </label>
+                            <input type="text"
+                                id="first-name"
+                                className="form-control"
+                                name="firstName"
+                                value={this.state.firstName}
+                                onChange={this.handleChange}
+                                required />
+                        </div>
+                        <div className="form-group">
 
-                                <label htmlFor="last-name">Last name: </label>
-                                <input type="text"
-                                    id="last-name"
-                                    className="form-control"
-                                    name="lastName"
-                                    value={this.state.lastName}
-                                    onChange={this.handleChange}
-                                    required />
+                            <label htmlFor="last-name">Last name: </label>
+                            <input type="text"
+                                id="last-name"
+                                className="form-control"
+                                name="lastName"
+                                value={this.state.lastName}
+                                onChange={this.handleChange}
+                                required />
 
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email: </label>
-                                <input type="email"
-                                    id="email"
-                                    className="form-control"
-                                    name="email"
-                                    value={this.state.email}
-                                    onChange={this.handleChange}
-                                    required />
+                        </div>
+                        <div className="form-group email-group">
+                            <label htmlFor="email">Email: </label>
+                            <input type="email"
+                                id="email"
+                                className="form-control"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                required />
 
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="password">Password: </label>
-                                <input type="password"
-                                    id="password"
-                                    className="form-control"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    required />
+                        </div>
+                        <div className="form-group pass-group">
+                            <label htmlFor="password">Password: </label>
+                            <input type="password"
+                                id="password"
+                                className="form-control"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                required />
 
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="re-password">Re-type password: </label>
-                                <input type="password"
-                                    id="re-password"
-                                    className="form-control"
-                                    name="rePassword"
-                                    value={this.state.rePassword}
-                                    onChange={this.handleChange}
-                                    required />
+                        </div>
+                        <div className="form-group re-type-group">
+                            <label htmlFor="re-password">Re-type password: </label>
+                            <input type="password"
+                                id="re-password"
+                                className="form-control"
+                                name="rePassword"
+                                value={this.state.rePassword}
+                                onChange={this.handleChange}
+                                required />
 
-                            </div>
-                            <input type="submit" value="Submit" className="btn btn-default" />
-                        </form>
-                    </div>
+                        </div>
+                        <input type="submit" value="Sign up" className="btn btn-default" />
+                    </form>
                 </div>
             </div>
         );

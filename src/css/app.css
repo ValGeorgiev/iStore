@@ -102,3 +102,54 @@ a:active {
 .image-container img {
   width: 100%;
 }
+
+.register {
+  padding: 40px;
+  background: #fafafa;
+}
+
+.register h2 {
+  margin-bottom: 22px;
+}
+
+.register .form-group {
+  margin-bottom: 17px;
+}
+
+.register input {
+  height: 40px;
+  font-size: 18px;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.register .btn.btn-default {
+  width: 200px;
+  margin-left: 30px;
+  font-size: 22px;
+}
+
+.register .form-group.email-group input {
+  margin-left: 45px;
+}
+.register .form-group.pass-group input {
+  margin-left: 15px;
+}
+
+.register .form-group.re-type-group {
+  display: flex;
+}
+
+.register .form-group.re-type-group label {
+  width: 80px;
+  height: 40px;
+  display: inline-block;
+}
+
+.register .form-group.re-type-group input {
+  margin-left: 14px;
+}
+
+.register .email-group-login #email {
+  margin-left: 40px;
+}

@@ -43,22 +43,20 @@ class Login extends Component {
 	render() {
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-12 register">
-                        <h2>Login:</h2>
-                        <form  className="form-group" onSubmit={this.authenticate}>
-                            <div className="form-group">
-                                <label htmlFor="email">Email: </label>
-                                <input type="email" id="email" className="form-control" name="email"/>
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="password">Password: </label>
-                                <input type="password" id="password" className="form-control" name="password" />
-                            </div>
-                            <input type="submit" value="Submit" className="btn btn-default" />
-                        </form>
-                    </div>
+            <div className="row">
+                <div className="col-xs-12 register">
+                    <h2>Login:</h2>
+                    <form  className="form-group" onSubmit={this.authenticate}>
+                        <div className="form-group email-group-login">
+                            <label htmlFor="email">Email: </label>
+                            <input type="email" id="email" className="form-control" name="email"/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="password">Password: </label>
+                            <input type="password" id="password" className="form-control" name="password" />
+                        </div>
+                        <input type="submit" value="Login" className="btn btn-default" />
+                    </form>
                 </div>
             </div>
         );

@@ -41,6 +41,7 @@
 	-moz-box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
 	box-shadow: 0px 0px 12px 1px rgba(194,192,194,1);
 	background: 0;
+	cursor: pointer;
 	font-size: 19px;
 	margin: 25px 0;
 }
@@ -50,13 +51,40 @@
 	margin-bottom: 20px;
 	font-weight: bold;
 }
-.profile-wrapper .address-name button{
+.profile-wrapper .address-name button {
 	height: 22px;
 	width: 40px;
 	margin-left: 20px;
+	cursor: pointer;
 }	
 
 .profile-wrapper .address-wrapper {
+	text-align: left;
 	margin-left: 60px;
 	margin-bottom: 35px;
 }	
+
+.address-form input {
+	height: 40px;
+	margin-left: 10px;
+	padding: 5px;
+	font-size: 17px;
+}
+
+.address-form .form-group {
+	margin-bottom: 10px;
+}
+
+.address-form .form-group #city {
+	margin-left: 41px;
+}
+.address-form .form-group #country {
+	margin-left: 12px;
+}
+.address-form .form-group #postal {
+	margin-left: 23px;
+}
+.address-form .btn.btn-default {
+	width: 130px;
+	cursor: pointer;
+}
