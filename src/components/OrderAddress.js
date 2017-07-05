@@ -13,12 +13,11 @@ class NewAddress extends Component {
                 address: '',
                 postal: '',
                 city: '',
-                country: '',
+                country: ''
             }
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitNewAddress = this.submitNewAddress.bind(this);
-        this.clearInputFields = this.clearInputFields.bind(this);
     }
 
     handleChange(event) {
@@ -50,7 +49,6 @@ class NewAddress extends Component {
                     console.log(err);
                 }
                 else {
-                    console.log(res);
                     this.props.updateAddresses();
                     this.clearInputFields();
                 }

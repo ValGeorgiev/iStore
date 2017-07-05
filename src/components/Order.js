@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import ajax from 'superagent';
 
 import SERVER_URL from '../config';
@@ -31,8 +31,6 @@ class Order extends Component {
         this.compareDate = this.compareDate.bind(this);
         this.sendOrder = this.sendOrder.bind(this);
         this.showNewAddress = this.showNewAddress.bind(this);
-        this.clearInputFields = this.clearInputFields.bind(this);
-        this.updateBasketsAfterOrder = this.updateBasketsAfterOrder.bind(this);
     }
 
     associateBaskets() {
@@ -41,14 +39,12 @@ class Order extends Component {
             .end((err, res) => {
                 if(!err && res) {
                     let baskets = JSON.parse(res.text);
-                    let to_be_ordered = baskets.filter( basket => !basket.ordered_by_current_user );
                     this.setState({
-                        basket_objects: to_be_ordered
+                        basket_objects: baskets
                     });
                     this.calculateOrderPrice();
                 }
                 else {
-                    console.log("Error while retrieving basket objects");
                     this.setState({
                         basket_objects: {}
                     });
@@ -117,22 +113,6 @@ class Order extends Component {
         this.setState({ card_details: card_placeholders });
     }
 
-    updateBasketsAfterOrder() {
-        let currentUserID = window.localStorage.getItem('profile-id');
-        ajax.post(`${SERVER_URL}/basket/${currentUserID}`)
-            .send({
-                ordered_by_current_user: true
-            })
-            .end((err, baskets) => {
-                if(!err && !!baskets) {
-                    console.log(baskets);
-                }
-                else {
-                    console.log(err);
-                }
-            })
-    }
-
     sendOrder() {
         let currentUserID = window.localStorage.getItem('profile-id');
         let price = this.state.total_price;
@@ -156,9 +136,7 @@ class Order extends Component {
             })
             .end((err, order) => {
                 if(!err && !!order) {
-                    console.log(order);
                     this.clearInputFields();
-                    this.updateBasketsAfterOrder();
                     browserHistory.push('/successful_order');
                 }
                 else {
@@ -280,7 +258,9 @@ class SuccessOrder extends Component {
     }
 
     homeRedirect() {
-        setTimeout(function() { browserHistory.push('/'); }.bind(this), 3000);
+        setTimeout(function() { 
+            browserHistory.push('/'); 
+        }, 3000);
     }
 
     componentDidMount() {

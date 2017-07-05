@@ -1,5 +1,6 @@
 var express = require('express');
 var Order = require('../models/order');
+var Basket = require('../models/basket');
 
 module.exports = function() {
     let orderRouting = express.Router();
@@ -20,6 +21,20 @@ module.exports = function() {
                 res.send(err);
                 return;
             }
+
+            _order.baskets.map((b) => {
+                Basket.findOne({
+                    _id: b._id
+                }, function(err, basket_product) {
+                    if (!err) {
+
+                        basket_product.ordered_by_current_user = true;
+                        basket_product.save();
+                    }
+
+                })
+            });
+
             res.send(_order);
         })
     })

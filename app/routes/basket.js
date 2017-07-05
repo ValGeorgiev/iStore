@@ -1,28 +1,14 @@
 var express = require('express');
 var Basket = require('../models/basket');
-//var Product = require('../models/product');
 
 module.exports = function() {
     let basketRouting = express.Router();
 
     basketRouting.get('/:user_id', function(req, res){
-        // Basket.find({
-        //     '
-        // }, function(err, products){
-        //     if (!!err) {
-        //         res.send(err);
-        //     }
-        //     else if (!!products) {
-        //         res.send(products);
-        //     }
-        //     else {
-        //         res.send({
-        //             "msg": "No products in current user's basket"
-        //         });
-        //     }
-        // });
+       
         Basket.find({
-            'user_id': req.params['user_id']
+            'user_id': req.params['user_id'],
+            'ordered_by_current_user': false
         }).populate('product')
         .exec(function(err, basket) {
             if(!err && !!basket) {
@@ -57,11 +43,11 @@ module.exports = function() {
             '_id': req.params['product_id']
         }, function(err) {
             Basket.find({
-                'user_id': req.params['user_id']
+                'user_id': req.params['user_id'],
+                'ordered_by_current_user': false
             }).populate('product')
             .exec(function(err, basket) {
                 if(!err && !!basket) {
-                    console.log(`offf: ${basket}`);
                     res.send(basket);
                 }
                 else {

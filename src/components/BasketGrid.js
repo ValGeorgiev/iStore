@@ -22,9 +22,8 @@ class BasketGrid extends Component {
             .end((err, res) => {
                 if(!err && res) {
                     let products = JSON.parse(res.text);
-                    let to_be_ordered = products.filter( product => !product.ordered_by_current_user );
                     this.setState({
-                         added_products: to_be_ordered
+                        added_products: products
                     });
                 }
                 else {
@@ -47,18 +46,18 @@ class BasketGrid extends Component {
 
     render() {
         let products = this.state.added_products;
-        const basket_products = products ? products.map(product => {
+        const basket_products = products.map(product => {
             return (<BasketTile key={product._id} basket_id={product._id} product={product.product} quantity={product.quantity} refresh_prs={this.updateBasketProducts}/>);
-        }) : (<div>Sorry</div>);
+        });
 
         return (
             <div className="row basket-wrapper">
                 <div className="col-xs-12">
                     <h2 className="basket-title">BASKET</h2>
                 </div>
-                {basket_products}
+                {basket_products.length > 0 ? basket_products : <div className="empty-basket-msg"> Sorry, your basket is empty! </div> }
                 <div className="col-xs-12 basket-checkout">
-                    {(products !== []) ? (<Link to='/order'>
+                    {(basket_products.length > 0) ? (<Link to='/order'>
                         <button className="checkout-button">
                             Checkout
                         </button>
