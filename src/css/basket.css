@@ -6,6 +6,7 @@
 .basket-title {
     text-align: center;
     margin: 20px 0;
+    padding-left: 165px;
 }
 
 .basket-product-wrapper .image-wrapper img {
@@ -33,7 +34,7 @@
 
 .basket-description-wrapper {
     width: 100%;
-    margin: auto auto;
+    margin: auto;
 }
 
 .basket-qtty-wrapper {
@@ -74,4 +75,9 @@
     width: 100%;
     display: block;
     text-align: center;
+}
+
+.your-orders {
+    height: 65px;
+    line-height: 65px;
 }

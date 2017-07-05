@@ -113,3 +113,12 @@
 .success-order {
     padding-left: 15px;
 }
+
+
+.orders-wrapper {
+    background: #fafafa;
+}
+
+.orders-wrapper .order-header div{
+    font-weight: bold;
+}

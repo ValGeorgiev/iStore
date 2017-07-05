@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import ajax from 'superagent';
 import BasketTile from './BasketTile';
 import SERVER_URL from '../config';
@@ -18,6 +18,11 @@ class BasketGrid extends Component {
 
     getBasketProducts() {
         let currentUser = window.localStorage.getItem("profile-id");
+
+        if (!currentUser) {
+            browserHistory.push('/'); 
+        }
+
         ajax.get(SERVER_URL + '/basket/' + currentUser)
             .end((err, res) => {
                 if(!err && res) {
@@ -52,8 +57,11 @@ class BasketGrid extends Component {
 
         return (
             <div className="row basket-wrapper">
-                <div className="col-xs-12">
+                <div className="col-xs-10">
                     <h2 className="basket-title">BASKET</h2>
+                </div>
+                <div className="col-xs-2 your-orders">
+                    <Link to="/orders">Your orders</Link>
                 </div>
                 {basket_products.length > 0 ? basket_products : <div className="empty-basket-msg"> Sorry, your basket is empty! </div> }
                 <div className="col-xs-12 basket-checkout">

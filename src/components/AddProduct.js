@@ -30,6 +30,15 @@ class AddProduct extends Component {
         total_price *= parseFloat(this.props.quantity);
         total_price = total_price.toString();
 
+
+        if (!currentUserId) {
+            this.setState({
+                message: "Please, try to login first!"
+            });
+            this.deleteMessage();
+            return;
+        }
+
         ajax.post(SERVER_URL + '/basket/')
             .send({
                 user_id: currentUserId,

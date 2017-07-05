@@ -5,6 +5,20 @@ var Basket = require('../models/basket');
 module.exports = function() {
     let orderRouting = express.Router();
 
+    orderRouting.get('/all/:userID', function(req, res) {
+        Order.find({
+            user_id: req.params.userID
+        }).populate('address_id')
+         .exec(function(err, orders) {
+            if (!!err) {
+                res.send(err);
+                return;
+            }
+            res.send(orders);
+        })
+     });
+
+
     orderRouting.post('/', function(req, res) {
         let order = new Order({
             baskets: req.body.baskets,

@@ -35,6 +35,11 @@ class Order extends Component {
 
     associateBaskets() {
         let currentUserID = window.localStorage.getItem('profile-id');
+
+        if (!currentUserID) {
+            browserHistory.push('/'); 
+        }
+
         ajax.get(`${SERVER_URL}/basket/${currentUserID}`)
             .end((err, res) => {
                 if(!err && res) {

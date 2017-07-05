@@ -51,10 +51,10 @@ class App extends Component {
 
 	render() {
 		let adminLink = this.renderAdminLink();
-		let  dat= this;
+		let that = this;
 		var children = React.Children.map(this.props.children, function (child) {
 			return React.cloneElement(child, {
-				userData: dat.state.user 
+				userData: that.state.user 
 			});
 		});
 		return (

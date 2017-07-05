@@ -1,0 +1,35 @@
+
+.orders-wrapper {
+    background: #fafafa;
+}
+
+.orders-wrapper .order-header span {
+    font-weight: bold;
+}
+
+
+.orders-wrapper .order-header {
+	margin: 10px 0 20px 0;
+}
+
+.orders-wrapper .order-row-inner {
+	border-bottom: 1px solid silver;
+	padding: 20px 0;
+}
+
+.orders-wrapper .order-row-inner p {
+	font-size: 15px;
+	font-weight: bold;
+	color: #033DA0;
+}
+.orders-wrapper .order-row-inner span {
+	font-weight: normal;
+	font-size: 17px;
+	color: black;
+}
+
+.orders-wrapper .order-row-inner .order-basket-row {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #f2f2f2;
+	padding-bottom: 5px;
+}
