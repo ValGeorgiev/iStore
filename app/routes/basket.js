@@ -40,7 +40,8 @@ module.exports = function() {
             product: req.body.product,
             color: req.body.color,
             quantity: req.body.quantity,
-            price: req.body.price
+            price: req.body.price,
+            ordered_by_current_user: req.body.ordered_by_current_user
         });
         basket.save(function(err, _basket) {
             if (!!err) {
@@ -59,16 +60,36 @@ module.exports = function() {
                 'user_id': req.params['user_id']
             }).populate('product')
             .exec(function(err, basket) {
-            if(!err && !!basket) {
-                console.log(`offf: ${basket}`);
-                res.send(basket);
-            }
-            else {
-                res.send([]);
-            }
-        })
+                if(!err && !!basket) {
+                    console.log(`offf: ${basket}`);
+                    res.send(basket);
+                }
+                else {
+                    res.send([]);
+                }
+            })
         })
     });
+
+    basketRouting.post('/:user_id', function(req, res){
+        Basket.update(
+            { 'user_id': req.params['user_id'] },
+            { $set: {'ordered_by_current_user': req.params['ordered_by_current_user']} },
+            { 'multi': true }, function(err) {
+                Basket.find({
+                    'user_id': req.params['user_id']
+                }).populate('product')
+                .exec(function(err, basket) {
+                    if(!err && !!basket) {
+                        res.send(basket);
+                    }
+                    else {
+                        res.send([]);
+                    }
+                })
+            }
+        )
+    })
 
     return basketRouting;
 }

@@ -109,3 +109,7 @@
 .address-wrapper .address-details .form-group {
     margin: 10px 0;
 }
+
+.success-order {
+    padding-left: 15px;
+}

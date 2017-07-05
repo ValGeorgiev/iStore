@@ -29,6 +29,11 @@ var BasketSchema = new Schema({
     price: {
         type: String,
         required: true
+    },
+
+    ordered_by_current_user: {
+        type: Boolean,
+        default: false
     }
 });
 

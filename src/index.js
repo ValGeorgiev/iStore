@@ -13,7 +13,8 @@ import {
   Register,
   ProductForm,
   BasketGrid,
-  Order
+  Order,
+  SuccessOrder
 } from './components';
 
 
@@ -56,6 +57,7 @@ render((
       <Route path="/basket" component={BasketGrid} />
       <Route path="/error" component={Error} />
       <Route path="/order" component={Order} />
+      <Route path="/successful_order" component={SuccessOrder} />
     </Route>
   </Router>
 

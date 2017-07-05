@@ -36,7 +36,8 @@ class AddProduct extends Component {
                 product: product._id,
                 color: product.color,
                 quantity: this.props.quantity,
-                price: total_price
+                price: total_price,
+                ordered_by_current_user: false
             })
             .end((err, product) => {
                 if(!err && product) {

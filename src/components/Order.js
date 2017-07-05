@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, browserHistory } from 'react-router';
 import ajax from 'superagent';
 
 import SERVER_URL from '../config';
@@ -31,6 +32,7 @@ class Order extends Component {
         this.sendOrder = this.sendOrder.bind(this);
         this.showNewAddress = this.showNewAddress.bind(this);
         this.clearInputFields = this.clearInputFields.bind(this);
+        this.updateBasketsAfterOrder = this.updateBasketsAfterOrder.bind(this);
     }
 
     associateBaskets() {
@@ -39,8 +41,9 @@ class Order extends Component {
             .end((err, res) => {
                 if(!err && res) {
                     let baskets = JSON.parse(res.text);
+                    let to_be_ordered = baskets.filter( basket => !basket.ordered_by_current_user );
                     this.setState({
-                        basket_objects: baskets
+                        basket_objects: to_be_ordered
                     });
                     this.calculateOrderPrice();
                 }
@@ -114,6 +117,22 @@ class Order extends Component {
         this.setState({ card_details: card_placeholders });
     }
 
+    updateBasketsAfterOrder() {
+        let currentUserID = window.localStorage.getItem('profile-id');
+        ajax.post(`${SERVER_URL}/basket/${currentUserID}`)
+            .send({
+                ordered_by_current_user: true
+            })
+            .end((err, baskets) => {
+                if(!err && !!baskets) {
+                    console.log(baskets);
+                }
+                else {
+                    console.log(err);
+                }
+            })
+    }
+
     sendOrder() {
         let currentUserID = window.localStorage.getItem('profile-id');
         let price = this.state.total_price;
@@ -139,6 +158,8 @@ class Order extends Component {
                 if(!err && !!order) {
                     console.log(order);
                     this.clearInputFields();
+                    this.updateBasketsAfterOrder();
+                    browserHistory.push('/successful_order');
                 }
                 else {
                     console.log(err);
@@ -251,4 +272,31 @@ class Order extends Component {
     }
 }
 
-export default Order;
+class SuccessOrder extends Component {
+
+    constructor(props) {
+        super(props);
+        this.homeRedirect = this.homeRedirect.bind(this);
+    }
+
+    homeRedirect() {
+        setTimeout(function() { browserHistory.push('/'); }.bind(this), 3000);
+    }
+
+    componentDidMount() {
+        this.homeRedirect()
+    }
+
+    render() {
+        return (
+            <div className="row order-wrapper">
+                <div className="col-xs-12">
+                    <h2 className="order-title">ORDER COMPLETED</h2>
+                </div>
+                <p className="success-order">Your order was successfully submited! Redirecting to main page...</p>
+            </div>
+        );
+    }
+}
+
+export { Order, SuccessOrder };
